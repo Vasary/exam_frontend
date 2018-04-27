@@ -1,0 +1,24 @@
+version: '3.2'
+
+services:
+  app:
+    container_name: exam-app
+    build: ./docker/node
+    env_file:
+      - .env
+    volumes:
+        - ./app:/app
+    ports:
+      - 8080:8080
+    restart: always
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+    networks:
+      - exam-network
+    command: npm start
+
+networks:
+  exam-network:
+    external: true
