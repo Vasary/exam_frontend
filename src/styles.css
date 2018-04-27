@@ -1,3 +1,11 @@
 .container.registration-form {
     width: 640px;
 }
+
+.registration-form .registration-form-margin-top {
+    margin-top: 18px;
+}
+
+.registration-form button {
+    margin-top: 18px;
+}
