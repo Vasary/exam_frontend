@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "build",
       "assets": [
         "assets",
         "favicon.ico"
@@ -19,9 +19,12 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "../node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/bootstrap-material-design/dist/js/bootstrap-material-design.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
