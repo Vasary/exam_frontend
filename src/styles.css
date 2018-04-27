@@ -1,11 +1,26 @@
-.container.registration-form {
-    width: 640px;
+header {
+    height: 80px;
+    line-height: 80px;
 }
 
-.registration-form .registration-form-margin-top {
-    margin-top: 18px;
+header .project-name {
+    margin-left: 20px;
+    font-size: 30px;
+    display: inline-block;
 }
 
-.registration-form button {
-    margin-top: 18px;
+header .navigation {
+    float: right;
+    display: inline-block;
+}
+
+footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0.5rem;
+    background-color: #efefef;
+    text-align: center;
+    font-size: 12px;
 }

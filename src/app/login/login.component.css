@@ -1,0 +1,12 @@
+.container .sign-in-form {
+    width: 640px;
+    margin: 0 auto;
+}
+
+.sign-in-form .sign-in-form-margin-top {
+    margin-top: 18px;
+}
+
+.sign-in-form button {
+    margin-top: 18px;
+}

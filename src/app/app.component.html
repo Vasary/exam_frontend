@@ -1,16 +1,16 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-    <h5 class="my-0 mr-md-auto font-weight-normal">{{ title }}</h5>
-    <a class="btn btn-outline-primary" href="#">Войти</a>
-    <a class="btn btn-outline-primary" href="#">Регистарция</a>
-    <a class="btn btn-outline-primary" href="#">О проекте</a>
-</div>
+<header class="bg-white border-bottom box-shadow">
+    <div class="project-name"><i class="fa fa-question-circle"> </i> {{ title }}</div>
+
+    <div class="navigation">
+        <a class="btn btn-raised btn-link" href="login"><i class="fa fa-sign-in"></i> Войти</a>
+        <a class="btn btn-raised btn-link" href="register"><i class="fa fa-user"></i> Регистрация</a>
+        <a class="btn btn-raised btn-link" href="about"><i class="fa fa-question-circle-o"></i> О проекте</a>
+    </div>
+
+</header>
 
 <router-outlet></router-outlet>
 
-<footer class="footer border-top">
-    <div class="container">
-        <span class="text-muted">
-            <p class="mt-5 mb-3 text-muted text-center">© 2018</p>
-        </span>
-    </div>
+<footer class="border-top">
+    <div class="container">© 2018</div>
 </footer>
