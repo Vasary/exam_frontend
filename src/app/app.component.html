@@ -2,9 +2,9 @@
     <div class="project-name"><i class="fa fa-question-circle"> </i> {{ title }}</div>
 
     <div class="navigation">
-        <a class="btn btn-raised btn-link" href="login"><i class="fa fa-sign-in"></i> Войти</a>
-        <a class="btn btn-raised btn-link" href="register"><i class="fa fa-user"></i> Регистрация</a>
-        <a class="btn btn-raised btn-link" href="about"><i class="fa fa-question-circle-o"></i> О проекте</a>
+        <a class="btn btn-raised btn-link" [routerLink]="['/login']"><i class="fa fa-sign-in"></i> Войти</a>
+        <a class="btn btn-raised btn-link" [routerLink]="['/register']"><i class="fa fa-user"></i> Регистрация</a>
+        <a class="btn btn-raised btn-link" [routerLink]="['/about']"><i class="fa fa-question-circle-o"></i> О проекте</a>
     </div>
 
 </header>

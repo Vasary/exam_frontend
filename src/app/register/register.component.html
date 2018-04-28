@@ -6,18 +6,25 @@
             <p>После регистрации вы поулчите логин и пароль для начала тестирования</p>
         </div>
 
-        <div class="form-label-group registration-form-margin-top">
-            <input type="text" id="input-surname" class="form-control" placeholder="Фамилия" required autofocus />
+        <div class="alert alert-danger" role="alert" *ngIf="showAlert">
+            {{ message }}
         </div>
 
         <div class="form-label-group registration-form-margin-top">
-            <input type="text" id="input-name" class="form-control" placeholder="Имя" required />
+            <input type="text" value="" name="_surname" [(ngModel)]="_surname" class="form-control"
+                   placeholder="Фамилия" required autofocus/>
         </div>
 
         <div class="form-label-group registration-form-margin-top">
-            <input type="text" id="input-patronymic" class="form-control" placeholder="Отчество" required />
+            <input type="text" value="" name="_name" [(ngModel)]="_name" class="form-control" placeholder="Имя"
+                   required/>
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
+        <div class="form-label-group registration-form-margin-top">
+            <input type="text" value="" name="_patronymic" [(ngModel)]="_patronymic" class="form-control"
+                   placeholder="Отчество" required/>
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" (click)="registerUser()">Зарегистрироваться</button>
     </form>
 </div>
