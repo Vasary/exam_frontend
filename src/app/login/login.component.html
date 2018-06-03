@@ -2,20 +2,35 @@
     <div class="login-container">
         <form class="sign-in-form">
             <div class="text-center mb-4">
-                <i class="fa fa-sign-in fa-5x" aria-hidden="true"> </i>
+                <i class="fa fa-sign-in fa-5x" aria-hidden="true" *ngIf="!successful"> </i>
+                <i class="fa fa-sign-in fa-5x color-successful" aria-hidden="true" *ngIf="successful"> </i>
                 <h1 class="h3 mb-3 font-weight-normal">Идентификация</h1>
                 <p>После корректной идентификации вы можете начать тестирование</p>
             </div>
 
-            <div class="form-label-group sign-in-form-margin-top">
-                <input type="text" id="input-login" class="form-control" placeholder="Login" required autofocus/>
+            <div *ngIf="processing">
+                <div class="alert alert-warning text-center">
+                    <i class="fa fa-cog fa-spin"></i>
+                </div>
+            </div>
+
+            <div *ngFor="let message of messages">
+                <div class="alert alert-danger">{{ message }}</div>
             </div>
 
             <div class="form-label-group sign-in-form-margin-top">
-                <input type="text" id="input-password" class="form-control" placeholder="Password" required/>
+                <input type="text" id="input-login" class="form-control" placeholder="Login" name="_login"
+                       [(ngModel)]="_login" required autofocus/>
             </div>
 
-            <button class="btn btn-lg btn-primary btn-block action-btn" type="submit">Войти</button>
+            <div class="form-label-group sign-in-form-margin-top">
+                <input type="text" id="input-password" class="form-control" placeholder="Password" name="_password"
+                       [(ngModel)]="_password" required/>
+            </div>
+
+            <button class="btn btn-lg btn-primary btn-block action-btn" type="submit" [disabled]="processing"
+                    (click)="login()">Войти
+            </button>
         </form>
     </div>
 </div>

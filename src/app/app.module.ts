@@ -14,6 +14,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { QuizPageDescriptionComponent } from './quiz-page-description/quiz-page-description.component';
 import { QuizGetResultComponent } from './quiz-get-result/quiz-get-result.component';
 import { AppGlobals } from './app.globals';
+import {LoginService} from './service/login.service';
 
 @NgModule({
     declarations: [
@@ -33,6 +34,7 @@ import { AppGlobals } from './app.globals';
     ],
     providers: [
         RegistrationService,
+        LoginService,
         CoreClientService,
         AuthGuard,
         AppGlobals,

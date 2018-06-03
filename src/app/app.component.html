@@ -2,10 +2,13 @@
     <div class="project-name"><i class="fa fa-question-circle"> </i> {{ title }}</div>
 
     <div class="navigation">
-        <a *ngIf="!globals.isLogged()" class="btn btn-raised btn-link" [routerLink]="['/login']" routerLinkActive="navigation-active"><i
+        <a *ngIf="!globals.active" class="btn btn-raised btn-link" [routerLink]="['/login']" routerLinkActive="navigation-active"><i
                 class="fa fa-sign-in"></i> Войти</a>
-        <a *ngIf="!globals.isLogged()" class="btn btn-raised btn-link" [routerLink]="['/register']" routerLinkActive="navigation-active"><i
+        <a *ngIf="!globals.active" class="btn btn-raised btn-link" [routerLink]="['/register']" routerLinkActive="navigation-active"><i
                 class="fa fa-user"></i> Регистрация</a>
+        <a *ngIf="globals.active" class="btn btn-raised btn-link" (click)="logout()" routerLinkActive="navigation-active"><i
+                class="fa fa-sign-out"></i> Выйти</a>
+
         <a class="btn btn-raised btn-link" [routerLink]="['/about']" routerLinkActive="navigation-active"><i
                 class="fa fa-question-circle-o"></i> О проекте</a>
     </div>

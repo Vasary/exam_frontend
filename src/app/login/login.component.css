@@ -27,3 +27,7 @@
 .container .sign-in-form {
     color: #337ab7;
 }
+
+.container .color-successful {
+    color: #2ecc40;
+}

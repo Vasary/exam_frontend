@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {AppGlobals} from './app.globals';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,9 +11,16 @@ export class AppComponent {
   title = null;
 
   private globals: AppGlobals;
+  private router: Router;
 
-  constructor(globals: AppGlobals) {
+  constructor(globals: AppGlobals, router: Router) {
       this.globals = globals;
       this.title = 'Система тестирования';
+      this.router = router;
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    this.router.navigate(['/about']);
   }
 }

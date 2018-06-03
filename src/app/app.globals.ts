@@ -3,9 +3,24 @@ import {User} from './models';
 
 @Injectable()
 export class AppGlobals {
-    public user: User;
+    private user: User;
 
-    isLogged(): boolean {
-        return null !== localStorage.getItem('token');
+    public active: boolean = false;
+
+    public constructor() {
+        this.updateActive()
     }
+
+    set user(user: User) {
+        this.user = user;
+        this.updateActive();
+    }
+
+    updateActive(): void {
+        if (null !== localStorage.getItem('token')) {
+            this.active = true;
+        }
+    }
+
+
 }
