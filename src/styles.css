@@ -1,3 +1,5 @@
+@import url("font/font.css");
+
 header {
     height: 80px;
     line-height: 80px;
@@ -7,11 +9,25 @@ header .project-name {
     margin-left: 20px;
     font-size: 30px;
     display: inline-block;
+    color: #337ab7;
+}
+
+header .navigation > a, a:active, a:hover, a:focus, a:focus-within {
+    color: #1976d2;
+    text-decoration: none !important;
+}
+
+header .navigation .navigation-active {
+    color: red;
 }
 
 header .navigation {
     float: right;
     display: inline-block;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
 }
 
 footer {
@@ -23,4 +39,8 @@ footer {
     background-color: #efefef;
     text-align: center;
     font-size: 12px;
+}
+
+.container {
+    margin-top: 25px;
 }

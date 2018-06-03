@@ -8,9 +8,9 @@ import { FormsModule } from "@angular/forms";
 import { RegistrationService } from "./service/registration.service";
 import { AuthGuard } from "./middleware";
 import { AppRoutes } from "./app.routing";
-import { TestComponent } from './test/test.component';
 import { CoreClientService } from "./service/core.client.service";
 import { HttpClientModule } from "@angular/common/http";
+import { QuizComponent } from './quiz/quiz.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +18,7 @@ import { HttpClientModule } from "@angular/common/http";
         AboutComponent,
         RegisterComponent,
         LoginComponent,
-        TestComponent
+        QuizComponent
     ],
     imports: [
         BrowserModule,

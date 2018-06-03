@@ -1,0 +1,125 @@
+.quiz-container {
+    border-radius: 4px;
+    padding: 26px;
+    box-shadow: 2px 2px 10px 1px rgba(222, 226, 230, 1);
+    border: 1px solid #dee2e6;
+    background: #ffffff;
+}
+
+.quiz-container blockquote {
+    background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.quiz-container blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 3em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+
+.quiz-container blockquote p {
+    display: inline;
+}
+
+.quiz-separator {
+    border-top: 1px solid #dee2e6;
+}
+
+@keyframes ripple {
+    0% {
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0);
+    }
+    50% {
+        box-shadow: 0 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 0 15px rgba(0, 0, 0, 0);
+    }
+}
+
+.quiz-container .quiz-radio > div {
+    padding: 4px;
+}
+.quiz-container .quiz-radio {
+    margin: 10px;
+    min-height: 50px;
+    height: 100%;
+}
+
+.quiz-container .quiz-radio.quiz-container .quiz-radio-inline {
+    display: inline-block;
+}
+
+.quiz-container .quiz-radio input[type=radio] {
+    display: none;
+}
+
+.quiz-container .quiz-radio input[type=radio]:checked + label:before {
+    border-color: #337ab7;
+    animation: ripple 0.2s linear forwards;
+}
+
+.quiz-container .quiz-radio input[type=radio]:checked + label:after {
+    transform: scale(1);
+}
+
+.quiz-container .quiz-radio:hover {
+    background: #dee2e6;
+    border-radius: 4px;
+}
+
+.quiz-container .quiz-radio label {
+    display: inline-block;
+    height: 100%;
+    line-height: 20px;
+    position: relative;
+    padding: 0 40px;
+    margin-bottom: 0;
+    cursor: pointer;
+    vertical-align: bottom;
+}
+
+.quiz-container .quiz-radio label:before, .quiz-container .quiz-radio label:after {
+    position: absolute;
+    content: "";
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    transition-property: transform, border-color;
+}
+
+.quiz-container .quiz-radio label:before {
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.54);
+}
+
+.quiz-container .quiz-radio label:after {
+    top: 5px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    transform: scale(0);
+    background: #337ab7;
+}
+
+.quiz-container .quiz-buttons {
+    margin-top: 14px;
+}
+
+.quiz-container .quiz-buttons .quiz-skip-btn > button {
+    border: 1px dashed red;
+    color: red;
+}
+
+.quiz-container .quiz-buttons .quiz-answer-btn > button {
+    border: 1px solid #337ab7;
+    color: #337ab7;
+}
