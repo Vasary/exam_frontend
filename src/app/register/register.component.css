@@ -11,19 +11,40 @@
     background: #ffffff;
 }
 
-.registration-form .registration-form-margin-top {
+.container .registration-form .registration-form-margin-top {
     margin-top: 18px;
 }
 
-.registration-form button {
+.container .registration-form button {
     margin-top: 18px;
 }
 
-.registration-form .action-btn {
+.container .registration-form .action-btn {
     border: 1px solid #337ab7;
     color: #337ab7;
 }
 
-.registration-form {
+.container .registration-form {
+    color: #337ab7;
+}
+
+.container .credentials-form .text-box{
+    color: #2ECC40;
+}
+
+.container .credentials-form .separator {
+    border-top: 1px solid #dee2e6;
+}
+
+.container .credentials-form .credentials{
+    padding: 50px;
+    font-weight: bold;
+}
+
+.container .credentials-form .btn-box {
+    margin-top: 14px;
+}
+.container .credentials-form button {
+    border: 1px solid #337ab7;
     color: #337ab7;
 }

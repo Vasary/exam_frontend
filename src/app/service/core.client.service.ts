@@ -9,9 +9,7 @@ export class CoreClientService {
         this.http = http;
     }
 
-    post(url: string): Promise<number> {
-        return new Promise(() => {
-            this.http.get(url)
-        });
+    post(url: string, data: object) {
+        return this.http.post(url, data);
     }
 }

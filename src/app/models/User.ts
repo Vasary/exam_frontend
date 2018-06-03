@@ -1,8 +1,8 @@
 export class User {
-    private _surname: string;
-    private _name: string;
-    private _patronymic: string;
-    private _token: string;
+    private _surname: string = null;
+    private _name: string = null;
+    private _patronymic: string = null;
+    private _token: string = null;
 
     get surname(): string {
         return this._surname;

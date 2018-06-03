@@ -6,11 +6,14 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from "@angular/forms";
 import { RegistrationService } from "./service/registration.service";
-import { AuthGuard } from "./middleware";
+import { AuthGuard, LoggedGuard } from "./middleware";
 import { AppRoutes } from "./app.routing";
 import { CoreClientService } from "./service/core.client.service";
 import { HttpClientModule } from "@angular/common/http";
 import { QuizComponent } from './quiz/quiz.component';
+import { QuizPageDescriptionComponent } from './quiz-page-description/quiz-page-description.component';
+import { QuizGetResultComponent } from './quiz-get-result/quiz-get-result.component';
+import { AppGlobals } from './app.globals';
 
 @NgModule({
     declarations: [
@@ -18,7 +21,9 @@ import { QuizComponent } from './quiz/quiz.component';
         AboutComponent,
         RegisterComponent,
         LoginComponent,
-        QuizComponent
+        QuizComponent,
+        QuizPageDescriptionComponent,
+        QuizGetResultComponent
     ],
     imports: [
         BrowserModule,
@@ -29,7 +34,9 @@ import { QuizComponent } from './quiz/quiz.component';
     providers: [
         RegistrationService,
         CoreClientService,
-        AuthGuard
+        AuthGuard,
+        AppGlobals,
+        LoggedGuard
     ],
     bootstrap: [ AppComponent ]
 })

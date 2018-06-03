@@ -1,14 +1,20 @@
 <div class="container">
     <div class="registration-container">
-        <form class="registration-form">
+        <form class="registration-form" *ngIf="!successful">
             <div class="text-center mb-4">
                 <i class="fa fa-user fa-5x" aria-hidden="true"> </i>
                 <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
                 <p>После регистрации вы поулчите логин и пароль для начала тестирования</p>
             </div>
 
-            <div class="alert alert-danger" role="alert" *ngIf="showAlert">
-                {{ message }}
+            <div *ngIf="processing">
+                <div class="alert alert-warning text-center">
+                    <i class="fa fa-cog fa-spin"></i>
+                </div>
+            </div>
+
+            <div *ngFor="let message of messages">
+                <div class="alert alert-danger">{{ message }}</div>
             </div>
 
             <div class="form-label-group registration-form-margin-top">
@@ -26,8 +32,34 @@
                        placeholder="Отчество" required/>
             </div>
 
-            <button class="btn btn-lg btn-primary btn-block action-btn" (click)="registerUser()">Зарегистрироваться
+            <button class="btn btn-lg btn-primary btn-block action-btn" (click)="registerUser()"
+                    [disabled]="processing">Зарегистрироваться
             </button>
         </form>
+
+        <div class="credentials-form" *ngIf="successful">
+            <div class="text-center text-box mb-4">
+                <i class="fa fa-user fa-5x" aria-hidden="true"> </i>
+                <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
+                <p>Вы успешно зарегистрированы. </p>
+            </div>
+            <div>
+                <p>В будущем для прохождерния повторного тестирования, вам нужно будет ввести логин и пароль указанные
+                    ниже.</p>
+            </div>
+
+            <div class="credentials">
+                <div class="c-login">Логин: {{ login }}</div>
+                <div class="c-password">Пароль: {{ password }}</div>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="btn-box">
+                <button class="btn btn-lg btn-primary btn-block" (click)="redirectToQuiz()"
+                        [disabled]="!successful">Перейти к тестированию
+                </button>
+            </div>
+        </div>
     </div>
 </div>

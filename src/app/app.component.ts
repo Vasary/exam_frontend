@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AppGlobals} from './app.globals';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Exam';
+  title = null;
 
-  constructor() {
-      this.title = 'Exam page 3';
+  private globals: AppGlobals;
+
+  constructor(globals: AppGlobals) {
+      this.globals = globals;
+      this.title = 'Система тестирования';
   }
 }

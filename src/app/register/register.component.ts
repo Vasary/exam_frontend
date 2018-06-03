@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { RegistrationService } from "../service/registration.service";
-import { User } from "../models";
+import {Component, OnInit} from '@angular/core';
+import {RegistrationService} from '../service/registration.service';
+import {User, Global} from '../models';
+import {HttpErrorResponse} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {AppGlobals} from '../app.globals';
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
-    styleUrls: [ './register.component.css' ]
+    styleUrls: ['./register.component.css']
 })
 
 export class RegisterComponent implements OnInit {
@@ -13,18 +16,29 @@ export class RegisterComponent implements OnInit {
     _surname: string;
     _patronymic: string;
 
-    message: string;
-    showAlert: boolean = false;
+    messages: Array<string> = [];
+
+    processing: boolean = false;
+
+    successful: boolean = false;
+
+    login: string = null;
+    password: string = null;
 
     service: RegistrationService;
 
-    constructor(service: RegistrationService) {
+    router: Router;
+
+    globals: AppGlobals;
+
+    constructor(service: RegistrationService, router: Router, globals: AppGlobals) {
         this.service = service;
+        this.router = router;
+        this.globals = globals;
     }
 
     registerUser() {
-        this.showAlert = true;
-        this.message = "Обработка данных";
+        this.processing = true;
 
         let user = new User();
 
@@ -32,7 +46,38 @@ export class RegisterComponent implements OnInit {
         user.surname = this._surname;
         user.patronymic = this._patronymic;
 
-        this.service.register(user)
+        this.service.register(user).subscribe(res => this.handleSuccess(res, user), error => this.handleError(error));
+    }
+
+    handleError(err: HttpErrorResponse) {
+        this.messages = [];
+
+        if (!Array.isArray(err.error['message'])) {
+            this.messages = [err.error['message']];
+        } else {
+            this.messages = err.error['message'];
+        }
+
+        this.processing = false;
+    }
+
+    handleSuccess(result, user: User) {
+        this.messages = [];
+        this.processing = false;
+
+        this.successful = true;
+
+        this.login = result.access['login'];
+        this.password = result.access['password'];
+
+        user.token = result.token;
+        localStorage.setItem('token', user.token);
+
+        this.globals.user = user;
+    }
+
+    redirectToQuiz() {
+        this.router.navigate(['quiz/description']);
     }
 
     ngOnInit() {

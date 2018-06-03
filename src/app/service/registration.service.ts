@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { CoreClientService } from "./core.client.service";
-import { User } from "../models";
+import {Injectable} from '@angular/core';
+import {CoreClientService} from './core.client.service';
+import {User} from '../models';
 
 @Injectable()
 export class RegistrationService {
@@ -12,13 +12,12 @@ export class RegistrationService {
     }
 
     register(user: User) {
-        console.log(this.service.post('http://localhost:8000').then(
-            res => {
-                console.log(1);
-            },
-            err => {
-                console.log(2);
-            }
-        ))
+        const formData = new FormData();
+
+        formData.append('firstName', user.name);
+        formData.append('secondName', user.surname);
+        formData.append('lastName', user.patronymic);
+
+        return this.service.post('http://localhost:81/register', formData);
     }
 }
