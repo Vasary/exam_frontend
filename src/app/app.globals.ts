@@ -17,11 +17,15 @@ export class AppGlobals {
         this.updateActive();
     }
 
-    updateActive(): void {
-        if (null !== localStorage.getItem('token')) {
-            this.active = true;
-        } else {
-            this.active = false;
+    getProfile(): string {
+        if (null !== this._user) {
+            return this._user.surname + ' ' + this._user.name + ' ' + this._user.patronymic;
         }
+
+        return '';
+    }
+
+    updateActive(): void {
+        this.active = null !== localStorage.getItem('token');
     }
 }

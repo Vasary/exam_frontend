@@ -6,6 +6,9 @@
                 class="fa fa-sign-in"></i> Войти</a>
         <a *ngIf="!globals.active" class="btn btn-raised btn-link" [routerLink]="['/register']" routerLinkActive="navigation-active"><i
                 class="fa fa-user"></i> Регистрация</a>
+
+        <a *ngIf="globals.active" class="btn btn-raised btn-link"><i class="fa fa-user"></i> {{ globals.getProfile() }}</a>
+
         <a *ngIf="globals.active" class="btn btn-raised btn-link" (click)="logout()" routerLinkActive="navigation-active"><i
                 class="fa fa-sign-out"></i> Выйти</a>
 
