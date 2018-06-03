@@ -3,7 +3,7 @@ import {User} from './models';
 
 @Injectable()
 export class AppGlobals {
-    private user: User;
+    private _user: User;
 
     public active: boolean = false;
 
@@ -12,15 +12,16 @@ export class AppGlobals {
     }
 
     set user(user: User) {
-        this.user = user;
+        this._user = user;
+
         this.updateActive();
     }
 
     updateActive(): void {
         if (null !== localStorage.getItem('token')) {
             this.active = true;
+        } else {
+            this.active = false;
         }
     }
-
-
 }

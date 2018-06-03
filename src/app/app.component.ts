@@ -21,6 +21,9 @@ export class AppComponent {
 
   logout(): void {
     localStorage.removeItem('token');
+    this.globals.user = null;
+    this.globals.updateActive();
+
     this.router.navigate(['/about']);
   }
 }
