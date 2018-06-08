@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="page-container">
+        <div *ngIf="processing">
+            <div class="alert alert-warning text-center">
+                <i class="fa fa-cog fa-spin"></i>
+            </div>
+        </div>
+        <div *ngIf="!processing">
+            {{ text }}
+        </div>
+
+        <div *ngFor="let message of messages">
+            <div class="alert alert-danger">{{ message }}</div>
+        </div>
+
+        <br>
+        <div class="quiz-separator"></div>
+        <br>
+
+        <div class="btn-box">
+            <button class="btn btn-lg btn-primary btn-block" (click)="sendAgreement()">
+                С условиями согласен. Начать тестирование
+            </button>
+        </div>
+    </div>
+</div>

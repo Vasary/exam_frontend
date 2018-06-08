@@ -1,20 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { AboutComponent } from './about/about.component';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
-import { FormsModule } from "@angular/forms";
-import { RegistrationService } from "./service/registration.service";
-import { AuthGuard, LoggedGuard } from "./middleware";
-import { AppRoutes } from "./app.routing";
-import { CoreClientService } from "./service/core.client.service";
-import { HttpClientModule } from "@angular/common/http";
-import { QuizComponent } from './quiz/quiz.component';
-import { QuizPageDescriptionComponent } from './quiz-page-description/quiz-page-description.component';
-import { QuizGetResultComponent } from './quiz-get-result/quiz-get-result.component';
-import { AppGlobals } from './app.globals';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppComponent} from './app.component';
+import {AboutComponent} from './about/about.component';
+import {RegisterComponent} from './register/register.component';
+import {LoginComponent} from './login/login.component';
+import {FormsModule} from '@angular/forms';
+import {RegistrationService} from './service/registration.service';
+import {AuthGuard, LoggedGuard} from './middleware';
+import {AppRoutes} from './app.routing';
+import {CoreClientService} from './service/core.client.service';
+import {HttpClientModule} from '@angular/common/http';
+import {QuizComponent} from './quiz/quiz.component';
+import {AppState} from './app.state.service';
 import {LoginService} from './service/login.service';
+import {WelcomeComponent} from './welcome/welcome.component';
+import {QuizWelcomeService} from './service/quiz.welcome.service';
+import {QuizProcessorService} from './service/quiz.processor.service';
+import {ResolverComponent} from './resolver/resolver.component';
+import {ResolverService} from './service/resolver.service';
 
 @NgModule({
     declarations: [
@@ -23,8 +26,8 @@ import {LoginService} from './service/login.service';
         RegisterComponent,
         LoginComponent,
         QuizComponent,
-        QuizPageDescriptionComponent,
-        QuizGetResultComponent
+        WelcomeComponent,
+        ResolverComponent,
     ],
     imports: [
         BrowserModule,
@@ -37,10 +40,13 @@ import {LoginService} from './service/login.service';
         LoginService,
         CoreClientService,
         AuthGuard,
-        AppGlobals,
-        LoggedGuard
+        AppState,
+        LoggedGuard,
+        QuizWelcomeService,
+        QuizProcessorService,
+        ResolverService
     ],
-    bootstrap: [ AppComponent ]
+    bootstrap: [AppComponent]
 })
 
 export class AppModule {

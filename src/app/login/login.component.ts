@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../service/login.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {User} from '../models';
-import {AppGlobals} from '../app.globals';
+import {AppState} from '../app.state.service';
+import {ResolverService} from '../service/resolver.service';
 
 @Component({
     selector: 'app-login',
@@ -12,7 +13,7 @@ import {AppGlobals} from '../app.globals';
 
 export class LoginComponent implements OnInit {
     private service: LoginService;
-    private globals: AppGlobals;
+    private appState: AppState;
 
     processing: boolean = false;
     messages: Array<string>;
@@ -22,18 +23,24 @@ export class LoginComponent implements OnInit {
 
     successful: boolean = false;
 
-    constructor(service: LoginService, globals: AppGlobals) {
+    resolver: ResolverService;
+
+    constructor(service: LoginService, globals: AppState, resolver: ResolverService) {
         this._login = '';
         this._password = '';
         this.service = service;
-        this.globals = globals;
+        this.appState = globals;
+        this.resolver = resolver;
     }
 
     login() {
         this.processing = true;
 
         this.service.login(this._login, this._password)
-            .subscribe(res => this.handleSuccess(res), error => this.handleError(error))
+            .subscribe(
+                res => this.handleSuccess(res),
+                error => this.handleError(error)
+            )
         ;
     }
 
@@ -49,7 +56,7 @@ export class LoginComponent implements OnInit {
         this.processing = false;
     }
 
-    handleSuccess(result) {
+    handleSuccess(result: object) {
         this.messages = [];
         this.processing = false;
         this.successful = true;
@@ -63,7 +70,9 @@ export class LoginComponent implements OnInit {
 
         localStorage.setItem('token', user.token);
 
-        this.globals.user = user;
+        this.appState.user = user;
+
+        this.resolver.resolve(result.scenario);
     }
 
     ngOnInit() {

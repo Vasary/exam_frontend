@@ -1,15 +1,95 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Answer} from '../models';
+import {HttpErrorResponse} from '@angular/common/http';
+import {QuizProcessorService} from '../service/quiz.processor.service';
 
 @Component({
-  selector: 'app-quiz',
-  templateUrl: './quiz.component.html',
-  styleUrls: ['./quiz.component.css']
+    selector: 'app-quiz',
+    templateUrl: './quiz.component.html',
+    styleUrls: ['./quiz.component.css']
 })
+
 export class QuizComponent implements OnInit {
+    private service: QuizProcessorService;
 
-  constructor() { }
+    private text: string;
+    private answers: [Answer];
 
-  ngOnInit() {
-  }
+    private processing: boolean = false;
 
+    private questionAnswer: Answer;
+
+    constructor(service: QuizProcessorService) {
+        this.service = service;
+    }
+
+    sendSkip() {
+        console.log('skip');
+    }
+
+    sendAnswer() {
+        if (null !== this.questionAnswer) {
+            this.processing = true;
+
+            this.service.sendAnswer(this.questionAnswer)
+                .subscribe(
+                    (result) => {
+                        if (result.result === 'success') {
+                            this.getQuestion()
+                        } else {
+                            this.processing = false;
+                        }
+                    },
+                    (error) => {
+                        this.handleError(error)
+                    }
+                );
+        }
+    }
+
+    setAnswer(answer: Answer) {
+        this.questionAnswer = answer;
+    }
+
+    getQuestion(): void {
+        this.processing = true;
+        this.answers = [];
+        this.questionAnswer = null;
+
+        this.service.getQuestion().subscribe(
+            res => this.handleSuccess(res),
+            err => this.handleError(err)
+        );
+    }
+
+    handleSuccess(response: object): void {
+        if (response.result === 'created') {
+            this.getQuestion();
+
+            return;
+        }
+
+        this.text = response.question;
+        this.answers = [];
+
+        for (let uuid in response.answers) {
+
+            let answer = new Answer();
+            answer.uuid = uuid;
+            answer.text = response.answers[uuid];
+
+            this.answers.push(answer);
+        }
+
+        this.processing = false;
+    }
+
+    handleError(error: HttpErrorResponse) {
+        this.processing = false;
+        this.text = error.message;
+    }
+
+    ngOnInit() {
+        this.getQuestion();
+    }
 }

@@ -1,23 +1,41 @@
+<div [hidden]="!loading" class="loader">
+    <div id="busyLayer">
+        <div>
+            <i class="fa fa-cog fa-5x fa-spin"></i>
+        </div>
+    </div>
+</div>
+
 <header class="bg-white border-bottom box-shadow">
     <div class="project-name"><i class="fa fa-question-circle"> </i> {{ title }}</div>
 
-    <div class="navigation">
-        <a *ngIf="!globals.active" class="btn btn-raised btn-link" [routerLink]="['/login']" routerLinkActive="navigation-active"><i
-                class="fa fa-sign-in"></i> Войти</a>
-        <a *ngIf="!globals.active" class="btn btn-raised btn-link" [routerLink]="['/register']" routerLinkActive="navigation-active"><i
-                class="fa fa-user"></i> Регистрация</a>
+    <div *ngIf="loading" class="navigation-loader">
+        <i class="fa fa-cog fa-spin"></i>
+    </div>
 
-        <a *ngIf="globals.active" class="btn btn-raised btn-link"><i class="fa fa-user"></i> {{ globals.getProfile() }}</a>
-
-        <a *ngIf="globals.active" class="btn btn-raised btn-link" (click)="logout()" routerLinkActive="navigation-active"><i
-                class="fa fa-sign-out"></i> Выйти</a>
-
+    <div class="navigation" *ngIf="!loading">
         <a class="btn btn-raised btn-link" [routerLink]="['/about']" routerLinkActive="navigation-active"><i
                 class="fa fa-question-circle-o"></i> О проекте</a>
+
+        <span *ngIf="!state.isLogged()">
+            <a class="btn btn-raised btn-link" [routerLink]="['/register']" routerLinkActive="navigation-active"><i
+                    class="fa fa-user"></i> Регистрация</a>
+            <a class="btn btn-raised btn-link" [routerLink]="['/login']" routerLinkActive="navigation-active"><i
+                    class="fa fa-sign-in"></i> Войти</a>
+        </span>
+
+        <span *ngIf="state.isLogged()">
+            <a class="btn btn-raised btn-link"><i class="fa fa-user"></i> {{ state.getProfile() }}</a>
+
+            <a class="btn btn-raised btn-link" (click)="logout()" routerLinkActive="navigation-active"><i
+                    class="fa fa-sign-out"></i> Выйти</a>
+        </span>
     </div>
 </header>
 
-<router-outlet></router-outlet>
+<div [hidden]="loading" class="router-output">
+    <router-outlet></router-outlet>
+</div>
 
 <footer class="border-top">
     <div>© 2018</div>

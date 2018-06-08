@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {RegistrationService} from '../service/registration.service';
-import {User, Global} from '../models';
+import {User} from '../models';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {AppGlobals} from '../app.globals';
+import {AppState} from '../app.state.service';
 
 @Component({
     selector: 'app-register',
@@ -29,15 +29,15 @@ export class RegisterComponent implements OnInit {
 
     router: Router;
 
-    globals: AppGlobals;
+    globals: AppState;
 
-    constructor(service: RegistrationService, router: Router, globals: AppGlobals) {
+    constructor(service: RegistrationService, router: Router, globals: AppState) {
         this.service = service;
         this.router = router;
         this.globals = globals;
     }
 
-    registerUser() {
+    registerUser(): void {
         this.processing = true;
 
         let user = new User();
@@ -49,19 +49,28 @@ export class RegisterComponent implements OnInit {
         this.service.register(user).subscribe(res => this.handleSuccess(res, user), error => this.handleError(error));
     }
 
+    /**
+     *
+     * @param {HttpErrorResponse} err
+     */
     handleError(err: HttpErrorResponse) {
         this.messages = [];
 
-        if (!Array.isArray(err.error['message'])) {
-            this.messages = [err.error['message']];
-        } else {
-            this.messages = err.error['message'];
-        }
+        // if (!Array.isArray(err.error['message'])) {
+        //     this.messages = [err.error['message']];
+        // } else {
+        //     this.messages = err.error['message'];
+        // }
 
         this.processing = false;
     }
 
+    /**
+     * @param result
+     * @param {User} user
+     */
     handleSuccess(result, user: User) {
+
         this.messages = [];
         this.processing = false;
 
@@ -74,10 +83,6 @@ export class RegisterComponent implements OnInit {
         localStorage.setItem('token', user.token);
 
         this.globals.user = user;
-    }
-
-    redirectToQuiz() {
-        this.router.navigate(['quiz/description']);
     }
 
     ngOnInit() {

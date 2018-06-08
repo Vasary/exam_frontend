@@ -4,13 +4,16 @@ import {User} from '../models';
 
 @Injectable()
 export class RegistrationService {
-
     private service: CoreClientService;
 
     constructor(coreClient: CoreClientService) {
         this.service = coreClient;
     }
 
+    /**
+     * @param {User} user
+     * @returns {Observable<Object>}
+     */
     register(user: User) {
         const formData = new FormData();
 
@@ -18,6 +21,6 @@ export class RegistrationService {
         formData.append('secondName', user.surname);
         formData.append('lastName', user.patronymic);
 
-        return this.service.post('http://localhost:81/register', formData);
+        return this.service.post('/register', formData);
     }
 }

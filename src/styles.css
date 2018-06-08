@@ -22,6 +22,18 @@ header .navigation .navigation-active {
 }
 
 header .navigation {
+    margin-top: 25px;
+    position: relative;
+    float: right;
+}
+
+header .navigation span {
+    float: right;
+    display: inline-block;
+}
+
+
+header .navigation  a {
     float: right;
     display: inline-block;
 }
