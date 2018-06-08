@@ -17,6 +17,8 @@ export class AppState {
         if (null !== user) {
             this._user = user;
             this.updateActive();
+        } else {
+            this.logged = false;
         }
     }
 

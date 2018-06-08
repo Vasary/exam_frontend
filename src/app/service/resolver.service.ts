@@ -5,38 +5,31 @@ import {Router} from '@angular/router';
 
 @Injectable()
 export class ResolverService {
-
     private client: CoreClientService;
     private global: AppState;
     private router: Router;
+    private map: Map;
 
     constructor(client: CoreClientService, global: AppState, router: Router) {
         this.client = client;
         this.global = global;
         this.router = router;
+        this.map = new Map();
+
+        this.map.set(1, '/welcome');
+        this.map.set(2, '/quiz/spawn');
+        this.map.set(3, '/quiz');
+        this.map.set(4, '/quiz/result');
+        this.map.set(5, '/logout');
     }
 
     resolve(result: object) {
         console.log(result);
 
-        if (result.action['action'] == 1) {
-            this.router.navigate(['/welcome']);
-        }
+        if (result && result.hasOwnProperty('action')) {
+            let action = this.map.get(result['action']) || '/about';
 
-        if (result.action['action'] == 2) {
-            this.router.navigate(['/quiz']);
-        }
-
-        if (result.action['action'] == 3) {
-            this.router.navigate(['/quiz']);
-        }
-
-        if (result.action['action'] == 4) {
-            this.router.navigate(['/quiz/result']);
-        }
-
-        if (result.action['action'] == 5) {
-            this.router.navigate(['/logout']);
+            this.router.navigate([action]);
         }
     }
 }

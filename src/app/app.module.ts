@@ -18,6 +18,8 @@ import {QuizWelcomeService} from './service/quiz.welcome.service';
 import {QuizProcessorService} from './service/quiz.processor.service';
 import {ResolverComponent} from './resolver/resolver.component';
 import {ResolverService} from './service/resolver.service';
+import {ResultComponent} from './result/result.component';
+import {QuizSpawnComponent} from './quiz.spawn/quiz.spawn.component';
 
 @NgModule({
     declarations: [
@@ -28,6 +30,8 @@ import {ResolverService} from './service/resolver.service';
         QuizComponent,
         WelcomeComponent,
         ResolverComponent,
+        ResultComponent,
+        QuizSpawnComponent,
     ],
     imports: [
         BrowserModule,

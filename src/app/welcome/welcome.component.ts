@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {QuizWelcomeService} from '../service/quiz.welcome.service';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {ResolverService} from '../service/resolver.service';
 
 @Component({
     selector: 'app-welcome',
@@ -16,12 +17,14 @@ export class WelcomeComponent implements OnInit {
     private processing: boolean = true;
     private messages: [string] = [];
     private router: Router;
+    private resolver: ResolverService;
 
-    constructor(service: QuizWelcomeService, router: Router) {
+    constructor(service: QuizWelcomeService, router: Router, resolver: ResolverService) {
         this.service = service;
         this.text = '';
         this.title = '';
         this.router = router;
+        this.resolver = resolver;
     }
 
     /**
@@ -31,8 +34,8 @@ export class WelcomeComponent implements OnInit {
         this.processing = true;
 
         this.service.sendAgrementSuccess().subscribe(
-            () => {
-                this.router.navigate(['/quiz']);
+            (result) => {
+                this.resolver.resolve(result.next);
             },
             (error) => {
                 this.handleError(error)

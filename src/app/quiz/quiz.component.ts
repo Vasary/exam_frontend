@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Answer} from '../models';
 import {HttpErrorResponse} from '@angular/common/http';
 import {QuizProcessorService} from '../service/quiz.processor.service';
+import {ResolverService} from '../service/resolver.service';
 
 @Component({
     selector: 'app-quiz',
@@ -18,9 +19,11 @@ export class QuizComponent implements OnInit {
     private processing: boolean = false;
 
     private questionAnswer: Answer;
+    private resolver: ResolverService;
 
-    constructor(service: QuizProcessorService) {
+    constructor(service: QuizProcessorService, resolver: ResolverService) {
         this.service = service;
+        this.resolver = resolver;
     }
 
     sendSkip() {
@@ -63,8 +66,8 @@ export class QuizComponent implements OnInit {
     }
 
     handleSuccess(response: object): void {
-        if (response.result === 'created') {
-            this.getQuestion();
+        if (response.hasOwnProperty('next')) {
+            this.resolver.resolve(response['next']);
 
             return;
         }
