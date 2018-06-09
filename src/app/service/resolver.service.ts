@@ -8,7 +8,7 @@ export class ResolverService {
     private client: CoreClientService;
     private global: AppState;
     private router: Router;
-    private map: Map;
+    private map: Map<number, string>;
 
     constructor(client: CoreClientService, global: AppState, router: Router) {
         this.client = client;

@@ -14,7 +14,7 @@ export class QuizComponent implements OnInit {
     private service: QuizProcessorService;
 
     private text: string;
-    private answers: [Answer];
+    private answers: Array<Answer>;
 
     private processing: boolean = false;
 
@@ -37,7 +37,7 @@ export class QuizComponent implements OnInit {
             this.service.sendAnswer(this.questionAnswer)
                 .subscribe(
                     (result) => {
-                        if (result.result === 'success') {
+                        if (result['result'] === 'success') {
                             this.getQuestion()
                         } else {
                             this.processing = false;
@@ -72,14 +72,14 @@ export class QuizComponent implements OnInit {
             return;
         }
 
-        this.text = response.question;
+        this.text = response['question'];
         this.answers = [];
 
-        for (let uuid in response.answers) {
+        for (let uuid in response['answers']) {
 
             let answer = new Answer();
             answer.uuid = uuid;
-            answer.text = response.answers[uuid];
+            answer.text = response['answers'][uuid];
 
             this.answers.push(answer);
         }

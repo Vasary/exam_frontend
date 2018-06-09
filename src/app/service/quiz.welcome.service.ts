@@ -13,14 +13,14 @@ export class QuizWelcomeService {
     /**
      * @returns {Observable<Object>}
      */
-    getWelcomePage() {
+    getWelcomePage(): Observable<object> {
         return this.service.get('/gateway')
     }
 
     /**
      * @returns {Observable}
      */
-    sendAgrementSuccess(): Observable {
+    sendAgreementSuccess(): Observable<object> {
         return this.service.post('/gateway', []);
     }
 }

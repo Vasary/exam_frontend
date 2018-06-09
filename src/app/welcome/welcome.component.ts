@@ -33,7 +33,7 @@ export class WelcomeComponent implements OnInit {
     sendAgreement(): void {
         this.processing = true;
 
-        this.service.sendAgrementSuccess().subscribe(
+        this.service.sendAgreementSuccess().subscribe(
             (result) => {
                 this.resolver.resolve(result.next);
             },

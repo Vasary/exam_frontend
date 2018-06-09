@@ -18,7 +18,7 @@ export class ResolverComponent implements OnInit {
     }
 
     resolve() {
-        this.resolver.resolve();
+        this.resolver.resolve(null);
     }
 
     ngOnInit() {

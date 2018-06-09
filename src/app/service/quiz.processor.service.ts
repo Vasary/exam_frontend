@@ -15,7 +15,7 @@ export class QuizProcessorService {
      * @param {Answer} answer
      * @returns {Observable}
      */
-    sendAnswer(answer: Answer): Observable {
+    sendAnswer(answer: Answer): Observable<object> {
         const data = new FormData();
         data.set('answerUuid', answer.uuid);
 
@@ -25,7 +25,7 @@ export class QuizProcessorService {
     /**
      * @returns {Observable}
      */
-    getQuestion(): Observable {
+    getQuestion(): Observable<object> {
         return this.client.get('/gateway');
     }
 }

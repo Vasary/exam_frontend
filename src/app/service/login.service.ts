@@ -31,7 +31,7 @@ export class LoginService {
      * @param {string} password
      * @returns {Observable<Object>}
      */
-    login(login: string, password: string): Observable {
+    login(login: string, password: string): Observable<object> {
         const formData = new FormData();
 
         formData.append('login', login);
