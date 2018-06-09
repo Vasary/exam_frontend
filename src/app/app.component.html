@@ -14,10 +14,10 @@
     </div>
 
     <div class="navigation" *ngIf="!loading">
-        <a class="btn btn-raised btn-link" [routerLink]="['/about']" routerLinkActive="navigation-active"><i
-                class="fa fa-question-circle-o"></i> О проекте</a>
-
         <span *ngIf="!state.isLogged()">
+            <a class="btn btn-raised btn-link" [routerLink]="['/about']" routerLinkActive="navigation-active"><i
+                    class="fa fa-question-circle-o"></i> О нас</a>
+
             <a class="btn btn-raised btn-link" [routerLink]="['/register']" routerLinkActive="navigation-active"><i
                     class="fa fa-user"></i> Регистрация</a>
             <a class="btn btn-raised btn-link" [routerLink]="['/login']" routerLinkActive="navigation-active"><i
@@ -25,9 +25,11 @@
         </span>
 
         <span *ngIf="state.isLogged()">
+            <a class="btn btn-raised btn-link" (click)="resolve()"><i class="fa fa-question-circle-o"></i> К тесту</a>
+
             <a class="btn btn-raised btn-link"><i class="fa fa-user"></i> {{ state.getProfile() }}</a>
 
-            <a class="btn btn-raised btn-link" (click)="logout()" routerLinkActive="navigation-active"><i
+            <a class="btn btn-raised btn-link" [routerLink]="['/logout']" routerLinkActive="navigation-active"><i
                     class="fa fa-sign-out"></i> Выйти</a>
         </span>
     </div>

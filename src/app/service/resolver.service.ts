@@ -24,8 +24,6 @@ export class ResolverService {
     }
 
     resolve(result: object) {
-        console.log(result);
-
         if (result && result.hasOwnProperty('action')) {
             let action = this.map.get(result['action']) || '/about';
 

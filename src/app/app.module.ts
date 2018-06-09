@@ -20,6 +20,7 @@ import {ResolverComponent} from './resolver/resolver.component';
 import {ResolverService} from './service/resolver.service';
 import {ResultComponent} from './result/result.component';
 import {QuizSpawnComponent} from './quiz.spawn/quiz.spawn.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
     declarations: [
@@ -32,6 +33,7 @@ import {QuizSpawnComponent} from './quiz.spawn/quiz.spawn.component';
         ResolverComponent,
         ResultComponent,
         QuizSpawnComponent,
+        LogoutComponent,
     ],
     imports: [
         BrowserModule,

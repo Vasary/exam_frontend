@@ -1,5 +1,4 @@
 .container .registration-form {
-    width: 640px;
     margin: 0 auto;
 }
 
@@ -37,7 +36,6 @@
 }
 
 .container .credentials-form .credentials{
-    padding: 50px;
     font-weight: bold;
 }
 

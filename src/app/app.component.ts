@@ -20,10 +20,14 @@ export class AppComponent implements AfterViewInit, OnInit {
         this.state = state;
     }
 
-    async ngOnInit() {
+    async resolve(): void {
         this.loading = true;
         await this.service.updateState();
         this.loading = false;
+    }
+
+    async ngOnInit() {
+        this.resolve();
     }
 
     ngAfterViewInit() {

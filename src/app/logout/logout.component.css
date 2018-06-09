@@ -1,10 +1,15 @@
-.quiz-spawn-container {
-    color: #337ab7;
+.container {
+    width: 640px;
+    margin: 0 auto;
+}
+
+.container .logout-container {
     border-radius: 4px;
     padding: 26px;
     box-shadow: 2px 2px 10px 1px rgba(222, 226, 230, 1);
     border: 1px solid #dee2e6;
     background: #ffffff;
+    color: #337ab7;
 }
 
 .container .message {

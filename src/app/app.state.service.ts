@@ -28,7 +28,7 @@ export class AppState {
 
     getProfile(): string {
         if (null !== this._user) {
-            return this._user.surname + ' ' + this._user.name + ' ' + this._user.patronymic;
+            return this._user.surname + ' ' + this._user.name;
         }
 
         return '';
