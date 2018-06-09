@@ -63,16 +63,16 @@ export class LoginComponent implements OnInit {
 
         let user = new User();
 
-        user.token = result.token;
-        user.name = result.profile['first_name'];
-        user.surname = result.profile['second_name'];
-        user.patronymic = result.profile['last_name'];
+        user.token = result['token'];
+        user.name = result['profile']['first_name'];
+        user.surname = result['profile']['second_name'];
+        user.patronymic = result['profile']['last_name'];
 
         localStorage.setItem('token', user.token);
 
         this.appState.user = user;
 
-        this.resolver.resolve(result.scenario);
+        this.resolver.resolve(result['scenario']);
     }
 
     ngOnInit() {

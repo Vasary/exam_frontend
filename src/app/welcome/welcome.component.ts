@@ -15,7 +15,7 @@ export class WelcomeComponent implements OnInit {
     private text: string;
     private title: string;
     private processing: boolean = true;
-    private messages: [string] = [];
+    private messages: Array<string> = [];
     private router: Router;
     private resolver: ResolverService;
 
@@ -48,8 +48,8 @@ export class WelcomeComponent implements OnInit {
      */
     handleSuccess(result: object) {
         this.messages = [];
-        this.text = result.text;
-        this.title = result.title;
+        this.text = result['text'];
+        this.title = result['title'];
 
         this.processing = false;
     }

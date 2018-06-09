@@ -27,7 +27,7 @@ export class QuizComponent implements OnInit {
     }
 
     sendSkip() {
-        console.log('skip');
+        alert("Не доступно в режиме тестирования");
     }
 
     sendAnswer() {

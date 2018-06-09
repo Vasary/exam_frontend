@@ -40,14 +40,14 @@ export class LoginService {
         return this.service.post('/login', formData);
     }
 
-    async logout(): void {
+    async logout() {
         await localStorage.removeItem('token');
         this.state.user = null;
 
         await this.updateState();
     }
 
-    async updateState(): void {
+    async updateState() {
         try {
             let result = await this.state.update();
             let user = new User();
@@ -59,7 +59,7 @@ export class LoginService {
             this.state.user = user;
 
             if (result.hasOwnProperty('current')) {
-                this.resolver.resolve(result.current);
+                this.resolver.resolve(result['current']);
             }
         } catch (e) {
             this.router.navigate(['/register']);
