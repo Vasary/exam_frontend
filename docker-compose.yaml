@@ -1,23 +1,15 @@
 version: '3.2'
 
 services:
-  app:
-    container_name: exam-app
-    build: ./docker/node
-    env_file:
-      - .env
-    volumes:
-        - ./:/app
+  nginx:
+    container_name: exam-nginx
+    build: ./docker/nginx
     ports:
       - 80:80
-    restart: always
-    ulimits:
-      nofile:
-        soft: 65535
-        hard: 65535
-    networks:
-      - exam-network
-    command: npm start
+      - 443:443
+    volumes:
+      - ./public:/app
+    command: nginx -g "daemon off;"
 
 networks:
   exam-network:

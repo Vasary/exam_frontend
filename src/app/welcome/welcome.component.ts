@@ -35,7 +35,7 @@ export class WelcomeComponent implements OnInit {
 
         this.service.sendAgreementSuccess().subscribe(
             (result) => {
-                this.resolver.resolve(result.next);
+                this.resolver.resolve(result['next']);
             },
             (error) => {
                 this.handleError(error)

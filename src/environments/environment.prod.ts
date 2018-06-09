@@ -1,4 +1,4 @@
 export const environment = {
-    production: false,
-    core: 'http://localhost:81'
+    production: true,
+    core: 'http://167.99.84.247'
 };
