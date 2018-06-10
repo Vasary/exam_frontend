@@ -9,7 +9,23 @@ services:
       - 443:443
     volumes:
       - ./public:/app
+      - ./var/logs:/var/log/nginx
+    depends_on:
+      - app
     command: nginx -g "daemon off;"
+
+  app:
+    container_name: exam-app
+    build: ./docker/node
+    volumes:
+        - ./:/app
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+    networks:
+      - exam-network
+    command: npm run-script build
 
 networks:
   exam-network:

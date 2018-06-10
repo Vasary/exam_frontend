@@ -4,6 +4,7 @@
 /tmp
 /out-tsc
 /node_modules
+/public/*
 
 /.idea
 .project
@@ -30,3 +31,4 @@ testem.log
 /e2e/*.js
 /e2e/*.map
 .DS_Store
+var/logs/*.log*
