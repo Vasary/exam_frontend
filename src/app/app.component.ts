@@ -8,10 +8,10 @@ import {AppState} from './app.state.service';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit, OnInit {
-    private title = null;
-    private loading: boolean;
-    private service: LoginService;
-    private state: AppState;
+    public title = null;
+    public loading: boolean;
+    protected service: LoginService;
+    protected state: AppState;
 
     constructor(service: LoginService, state: AppState) {
         this.title = 'Quiz test';

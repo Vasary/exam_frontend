@@ -7,13 +7,15 @@ services:
     volumes:
         - ./:/app
     restart: always
+    ports:
+      - 80:80
     ulimits:
       nofile:
         soft: 65535
         hard: 65535
     networks:
       - exam-network
-    command: npm run
+    command: npm run-script start
 
 networks:
   exam-network:

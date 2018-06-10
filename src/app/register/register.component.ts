@@ -35,6 +35,9 @@ export class RegisterComponent implements OnInit {
         this.service = service;
         this.router = router;
         this.globals = globals;
+        this._name = '';
+        this._surname = '';
+        this._patronymic = '';
     }
 
     registerUser(): void {
@@ -56,11 +59,11 @@ export class RegisterComponent implements OnInit {
     handleError(err: HttpErrorResponse) {
         this.messages = [];
 
-        // if (!Array.isArray(err.error['message'])) {
-        //     this.messages = [err.error['message']];
-        // } else {
-        //     this.messages = err.error['message'];
-        // }
+        if (!Array.isArray(err.error['message'])) {
+            this.messages = [err.error['message']];
+        } else {
+            this.messages = err.error['message'];
+        }
 
         this.processing = false;
     }

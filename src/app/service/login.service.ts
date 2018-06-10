@@ -5,6 +5,7 @@ import {User} from '../models';
 import {AppState} from '../app.state.service';
 import {ResolverService} from './resolver.service';
 import {Router} from '@angular/router';
+import {HttpParams} from '@angular/common/http';
 
 @Injectable()
 export class LoginService {
@@ -32,12 +33,13 @@ export class LoginService {
      * @returns {Observable<Object>}
      */
     login(login: string, password: string): Observable<object> {
-        const formData = new FormData();
+        let params =
+            new HttpParams()
+                .set('login', login)
+                .set('password', password)
+        ;
 
-        formData.append('login', login);
-        formData.append('password', password);
-
-        return this.service.post('/login', formData);
+        return this.service.post('/login', params);
     }
 
     async logout() {

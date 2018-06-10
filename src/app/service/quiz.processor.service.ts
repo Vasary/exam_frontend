@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {CoreClientService} from './core.client.service';
 import {Answer} from '../models';
 import {Observable} from 'rxjs/Observable';
+import {HttpParams} from '@angular/common/http';
 
 @Injectable()
 export class QuizProcessorService {
@@ -16,10 +17,9 @@ export class QuizProcessorService {
      * @returns {Observable}
      */
     sendAnswer(answer: Answer): Observable<object> {
-        const data = new FormData();
-        data.set('answerUuid', answer.uuid);
+        let params = new HttpParams().set('value', answer.uuid);
 
-        return this.client.post('/gateway', data);
+        return this.client.post('/gateway', params);
     }
 
     /**

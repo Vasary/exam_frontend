@@ -19,7 +19,7 @@ export class CoreClientService {
      * @returns {Observable<Object>}
      */
     post(url: string, data: object) {
-        return this.http.post(environment.core +  url, data, CoreClientService.getHeaders());
+        return this.http.post(environment.core +  url, data.toString(), CoreClientService.postHeaders());
     }
 
     /**
@@ -28,6 +28,24 @@ export class CoreClientService {
      */
     get(url: string) {
         return this.http.get(environment.core + url, CoreClientService.getHeaders());
+    }
+
+    static postHeaders(): object {
+
+        let map = new Map();
+        let headers = new HttpHeaders();
+
+        map.set('Content-Type', 'application/x-www-form-urlencoded');
+
+        if (null !== localStorage.getItem('token')) {
+            map.set('Token', localStorage.getItem('token'));
+        }
+
+        map.forEach(function (value: string, header: string, map: Map<string, string>) {
+            headers = headers.set(header, value);
+        });
+
+        return {headers: headers};
     }
 
     /**

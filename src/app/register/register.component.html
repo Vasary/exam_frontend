@@ -13,8 +13,10 @@
                 </div>
             </div>
 
-            <div *ngFor="let message of messages">
-                <div class="alert alert-danger">{{ message }}</div>
+            <div *ngIf="!successful">
+                <div *ngFor="let message of messages">
+                    <div class="alert alert-danger">{{ message }}</div>
+                </div>
             </div>
 
             <div class="form-label-group registration-form-margin-top">

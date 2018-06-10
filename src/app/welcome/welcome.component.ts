@@ -12,10 +12,9 @@ import {ResolverService} from '../service/resolver.service';
 export class WelcomeComponent implements OnInit {
 
     private service: QuizWelcomeService;
-    private text: string;
-    private title: string;
-    private processing: boolean = true;
-    private messages: Array<string> = [];
+    public text: string;
+    public title: string;
+    public processing: boolean = true;
     private router: Router;
     private resolver: ResolverService;
 
@@ -47,7 +46,6 @@ export class WelcomeComponent implements OnInit {
      * @param {object} result
      */
     handleSuccess(result: object) {
-        this.messages = [];
         this.text = result['text'];
         this.title = result['title'];
 
@@ -58,12 +56,6 @@ export class WelcomeComponent implements OnInit {
      * @param {HttpErrorResponse} err
      */
     handleError(err: HttpErrorResponse) {
-        if (!Array.isArray(err.error['message'])) {
-            this.messages = [err.error['message']];
-        } else {
-            this.messages = err.error['message'];
-        }
-
         this.processing = false;
     }
 

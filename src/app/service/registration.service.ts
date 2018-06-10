@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CoreClientService} from './core.client.service';
 import {User} from '../models';
+import {HttpParams} from '@angular/common/http';
 
 @Injectable()
 export class RegistrationService {
@@ -15,12 +16,12 @@ export class RegistrationService {
      * @returns {Observable<Object>}
      */
     register(user: User) {
-        const formData = new FormData();
+        let params = new HttpParams()
+            .set('firstName', user.name)
+            .set('secondName', user.surname)
+            .set('lastName', user.patronymic)
+        ;
 
-        formData.append('firstName', user.name);
-        formData.append('secondName', user.surname);
-        formData.append('lastName', user.patronymic);
-
-        return this.service.post('/register', formData);
+        return this.service.post('/register', params);
     }
 }

@@ -16,7 +16,7 @@ export class QuizComponent implements OnInit {
     private text: string;
     private answers: Array<Answer>;
 
-    private processing: boolean = false;
+    public processing: boolean = false;
 
     private questionAnswer: Answer;
     private resolver: ResolverService;
