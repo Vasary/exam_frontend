@@ -1,0 +1,10 @@
+version: '3.6'
+
+services:
+  nginx:
+    container_name: exam-nginx
+    image: vasary/exam-frontend:1.0.0.0
+    ports:
+      - 80:80
+      - 443:443
+    command: nginx -g "daemon off;"

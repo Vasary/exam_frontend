@@ -1,0 +1,14 @@
+version: '3.2'
+
+services:
+  nginx:
+    build: ./docker/nginx
+
+  app:
+    build: ./docker/node
+    volumes:
+        - ./:/app
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
