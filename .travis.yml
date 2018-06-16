@@ -16,7 +16,11 @@ before_install:
 script:
   - docker-compose -f docker-compose.builder.yaml build app
   - docker-compose -f docker-compose.builder.yaml run app ng build --prod
-  - docker-compose -f docker-compose.builder.yaml build nginx
-  - docker login -u="$DOCKER_HUB_USER" -p="$DOCKER_HUB_PASSWORD"
-  - docker tag frontend_nginx vasary/exam-frontend:{TRAVIS_BRANCH}
-  - docker push "$DOCKER_HUB_USER"/exam-frontend:{TRAVIS_BRANCH}
+  - ls ./
+  - ls ./docker/
+  - ls ./docker/nginx
+  - ls ./docker/nginx/dist
+#  - docker-compose -f docker-compose.builder.yaml build nginx
+#  - docker login -u="$DOCKER_HUB_USER" -p="$DOCKER_HUB_PASSWORD"
+#  - docker tag frontend_nginx vasary/exam-frontend:{TRAVIS_BRANCH}
+#  - docker push "$DOCKER_HUB_USER"/exam-frontend:{TRAVIS_BRANCH}
