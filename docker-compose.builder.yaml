@@ -2,6 +2,7 @@ version: '3.2'
 
 services:
   nginx:
+    container_name: exam-frontend
     build: ./docker/nginx
 
   app:
