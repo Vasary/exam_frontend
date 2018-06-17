@@ -1,27 +1,26 @@
-# Exam
+## Exam frontend client
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+[![Build Status](https://travis-ci.org/Vasary/exam_frontend.svg?branch=master)](https://travis-ci.org/Vasary/exam_frontend) [![CodeFactor](https://www.codefactor.io/repository/github/vasary/exam_frontend/badge)](https://www.codefactor.io/repository/github/vasary/exam_frontend)
 
-## Development server
+### Features
+- Registration
+- Login
+- Repeatable test
+- Test result
+- Show advertisement
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+### Install on production
+```
+version: '3'
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+services:
+  nginx:
+    container_name: exam-nginx
+    image: vasary/exam-frontend:latest
+    ports:
+      - 80:80
+      - 443:443
+    command: nginx -g "daemon off;"
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
