@@ -30,6 +30,7 @@ before_deploy:
   - docker tag exam_frontend_nginx "${IMAGE_NAME}:${git_sha}-master"
 
 deploy:
+  skip_cleanup: true
   provider: script
   script: docker push "${IMAGE_NAME}:latest" && docker push "${IMAGE_NAME}:${git_sha}-master"
   on:
