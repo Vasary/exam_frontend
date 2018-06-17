@@ -14,7 +14,7 @@ export class AppComponent implements AfterViewInit, OnInit {
     protected state: AppState;
 
     constructor(service: LoginService, state: AppState) {
-        this.title = 'Quiz test';
+        this.title = 'Quiz test beta';
         this.loading = true;
         this.service = service;
         this.state = state;
