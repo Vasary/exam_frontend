@@ -1,9 +1,9 @@
-version: '3.6'
+version: '3'
 
 services:
   nginx:
     container_name: exam-nginx
-    image: vasary/exam-frontend:1.0.0.0
+    image: vasary/exam-frontend:latest
     ports:
       - 80:80
       - 443:443
