@@ -14,6 +14,8 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 script:
+  - echo $TRAVIS_COMMIT
   - docker-compose -f docker-compose.builder.yaml build app
+  - docker-compose -f docker-compose.builder.yaml run app yarn install
   - docker-compose -f docker-compose.builder.yaml run app ng build --prod
   - docker-compose -f docker-compose.builder.yaml build nginx
