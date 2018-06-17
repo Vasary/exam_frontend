@@ -22,5 +22,5 @@ script:
   - docker-compose -f docker-compose.builder.yaml build nginx
   - docker login -u="$DOCKER_HUB_USER" -p="$DOCKER_HUB_PASSWORD"
   - docker images
-  - docker tag frontend_nginx $DOCKER_HUB_USER/exam-frontend:$TRAVIS_COMMIT
+  - docker tag exam_frontend_nginx $DOCKER_HUB_USER/exam-frontend:$TRAVIS_COMMIT
   - docker push $DOCKER_HUB_USER/exam-frontend:$TRAVIS_COMMIT
