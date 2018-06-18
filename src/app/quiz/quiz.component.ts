@@ -16,15 +16,18 @@ export class QuizComponent implements OnInit {
     private text: string;
     private answers: Array<Answer>;
 
-    public processing: boolean = false;
+    private processing: boolean;
+    private showBanner: boolean;
 
     private questionAnswer: Answer;
-    private resolver: ResolverService;
 
-    private showBanner: boolean = false;
-    private banner: Banner = null;
+    private resolver: ResolverService;
+    private banner: Banner;
 
     constructor(service: QuizProcessorService, resolver: ResolverService) {
+        this.processing = true;
+        this.showBanner = false;
+
         this.service = service;
         this.resolver = resolver;
         this.banner = new Banner();
@@ -33,41 +36,38 @@ export class QuizComponent implements OnInit {
     sendSkip(): void {
         this.processing = true;
 
-        this.service.sendSkip()
-            .subscribe(
-                (result) => {
-                    if (result['result'] === 'success') {
-                        this.getQuestion();
-                    } else {
-                        this.processing = false;
-                    }
+        this.service.sendSkip().subscribe(
+            (result) => {
+                    this.handleResult(result);
                 },
-                (error) => {
-                    this.handleError(error);
-                }
-            )
-        ;
+            (error) => {
+                this.handleError(error);
+            }
+        );
     }
 
     sendAnswer() {
         if (null !== this.questionAnswer) {
             this.processing = true;
 
-            this.service.sendAnswer(this.questionAnswer)
-                .subscribe(
-                    (result) => {
-                        if (result['result'] === 'success') {
-                            this.getQuestion()
-                        } else {
-                            this.processing = false;
-                        }
-                    },
-                    (error) => {
-                        this.handleError(error)
-                    }
-                )
-            ;
+            this.service.sendAnswer(this.questionAnswer).subscribe(
+                (result) => {
+                    this.handleResult(result);
+                },
+                (error) => {
+                    this.handleError(error);
+                }
+            )
+        ;
+        } else {
+            alert('Выберите ответ');
         }
+    }
+
+    handleResult(result: object): void {
+        // if show banner!
+
+        this.getQuestion();
     }
 
     setAnswer(answer: Answer) {
@@ -89,10 +89,10 @@ export class QuizComponent implements OnInit {
         this.processing = true;
         this.showBanner = true;
 
-        let banner = new Banner();
+        const banner = new Banner();
 
-        banner.text = "Example";
-        banner.link = "assets/images/banner_example.jpg";
+        banner.text = 'Example';
+        banner.link = 'assets/images/banner_example.jpg';
         this.banner = banner;
     }
 
@@ -106,13 +106,14 @@ export class QuizComponent implements OnInit {
         this.text = response['question'];
         this.answers = [];
 
-        for (let uuid in response['answers']) {
+        for (const uuid in response['answers']) {
+            if (response['answers'].hasOwnProperty(uuid)) {
+                const answer = new Answer();
+                answer.uuid = uuid;
+                answer.text = response['answers'][uuid];
 
-            let answer = new Answer();
-            answer.uuid = uuid;
-            answer.text = response['answers'][uuid];
-
-            this.answers.push(answer);
+                this.answers.push(answer);
+            }
         }
 
         this.processing = false;
