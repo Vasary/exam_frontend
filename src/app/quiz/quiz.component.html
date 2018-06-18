@@ -7,7 +7,19 @@
             </div>
         </div>
 
-        <form class="quiz-form" *ngIf="!processing">
+        <div class="banner-form" *ngIf="!processing && showBanner">
+            <div class="banner-text">
+                {{ banner.text }}
+            </div>
+
+            <div class="banner-pic-box">
+                <picture>
+                    <img src="{{ banner.link }}" class="rounded mx-auto d-block img-fluid img-thumbnail" alt="{{ banner.altText }}">
+                </picture>
+            </div>
+        </div>
+
+        <form class="quiz-form" *ngIf="!processing && !showBanner">
             <div class="quiz-question">
                 <blockquote>
                     <div class="quiz-question">

@@ -130,3 +130,12 @@
     position: relative;
     color: gray;
 }
+
+.banner-form .banner-pic-box {
+    margin-top: 6px;
+}
+
+.banner-form .banner-text {
+    padding: 4px;
+    background: #ffff00;
+}

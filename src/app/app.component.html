@@ -15,22 +15,37 @@
 
     <div class="navigation" *ngIf="!loading">
         <span *ngIf="!state.isLogged()">
-            <a class="btn btn-raised btn-link" [routerLink]="['/about']" routerLinkActive="navigation-active"><i
-                    class="fa fa-question-circle-o"></i> О нас</a>
+            <a class="btn btn-raised btn-link" [routerLink]="['/about']" routerLinkActive="navigation-active">
+                <i class="fa fa-question-circle-o"></i>
+                <span class="d-none d-md-block">О нас</span>
+            </a>
 
-            <a class="btn btn-raised btn-link" [routerLink]="['/register']" routerLinkActive="navigation-active"><i
-                    class="fa fa-user"></i> Регистрация</a>
-            <a class="btn btn-raised btn-link" [routerLink]="['/login']" routerLinkActive="navigation-active"><i
-                    class="fa fa-sign-in"></i> Войти</a>
+            <a class="btn btn-raised btn-link" [routerLink]="['/register']" routerLinkActive="navigation-active">
+                <i class="fa fa-user"></i>
+                <span class="d-none d-md-block">Регистрация</span>
+            </a>
+
+            <a class="btn btn-raised btn-link" [routerLink]="['/login']" routerLinkActive="navigation-active">
+                <i class="fa fa-sign-in"></i>
+                <span class="d-none d-md-block">Войти</span>
+            </a>
         </span>
 
         <span *ngIf="state.isLogged()">
-            <a class="btn btn-raised btn-link" (click)="resolve()"><i class="fa fa-question-circle-o"></i> К тесту</a>
+            <a class="btn btn-raised btn-link" (click)="resolve()">
+                <i class="fa fa-question-circle-o"></i>
+                <span class="d-none d-md-block">К тесту</span>
+            </a>
 
-            <a class="btn btn-raised btn-link"><i class="fa fa-user"></i> {{ state.getProfile() }}</a>
+            <a class="btn btn-raised btn-link">
+                <i class="fa fa-user"></i>
+                <span class="d-none d-md-block">{{ state.getProfile() }}</span>
+            </a>
 
-            <a class="btn btn-raised btn-link" [routerLink]="['/logout']" routerLinkActive="navigation-active"><i
-                    class="fa fa-sign-out"></i> Выйти</a>
+            <a class="btn btn-raised btn-link" [routerLink]="['/logout']" routerLinkActive="navigation-active">
+                <i class="fa fa-sign-out"></i>
+                <span class="d-none d-md-block">Выйти</span>
+            </a>
         </span>
     </div>
 </header>

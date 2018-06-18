@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Answer} from '../models';
+import {Answer, Banner} from '../models';
 import {HttpErrorResponse} from '@angular/common/http';
 import {QuizProcessorService} from '../service/quiz.processor.service';
 import {ResolverService} from '../service/resolver.service';
@@ -21,13 +21,32 @@ export class QuizComponent implements OnInit {
     private questionAnswer: Answer;
     private resolver: ResolverService;
 
+    private showBanner: boolean = false;
+    private banner: Banner = null;
+
     constructor(service: QuizProcessorService, resolver: ResolverService) {
         this.service = service;
         this.resolver = resolver;
+        this.banner = new Banner();
     }
 
-    sendSkip() {
-        alert("Не доступно в режиме тестирования");
+    sendSkip(): void {
+        this.processing = true;
+
+        this.service.sendSkip()
+            .subscribe(
+                (result) => {
+                    if (result['result'] === 'success') {
+                        this.getQuestion();
+                    } else {
+                        this.processing = false;
+                    }
+                },
+                (error) => {
+                    this.handleError(error);
+                }
+            )
+        ;
     }
 
     sendAnswer() {
@@ -46,7 +65,8 @@ export class QuizComponent implements OnInit {
                     (error) => {
                         this.handleError(error)
                     }
-                );
+                )
+            ;
         }
     }
 
@@ -63,6 +83,17 @@ export class QuizComponent implements OnInit {
             res => this.handleSuccess(res),
             err => this.handleError(err)
         );
+    }
+
+    handleAdv(response: object): void {
+        this.processing = true;
+        this.showBanner = true;
+
+        let banner = new Banner();
+
+        banner.text = "Example";
+        banner.link = "assets/images/banner_example.jpg";
+        this.banner = banner;
     }
 
     handleSuccess(response: object): void {

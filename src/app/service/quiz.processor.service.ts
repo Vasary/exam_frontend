@@ -25,6 +25,19 @@ export class QuizProcessorService {
     /**
      * @returns {Observable}
      */
+    sendSkip(): Observable<object> {
+        let params =
+            new HttpParams()
+                .set('value', null)
+                .set('skip', 'true')
+        ;
+
+        return this.client.post('/gateway', params);
+    }
+
+    /**
+     * @returns {Observable}
+     */
     getQuestion(): Observable<object> {
         return this.client.get('/gateway');
     }

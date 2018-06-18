@@ -14,13 +14,13 @@ export class AppComponent implements AfterViewInit, OnInit {
     protected state: AppState;
 
     constructor(service: LoginService, state: AppState) {
-        this.title = 'Quiz test beta';
+        this.title = 'Тестирование';
         this.loading = true;
         this.service = service;
         this.state = state;
     }
 
-    async resolve() {
+    async resolve(): Promise<void> {
         this.loading = true;
         await this.service.updateState();
         this.loading = false;

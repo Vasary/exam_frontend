@@ -14,7 +14,7 @@ export class QuizWelcomeService {
      * @returns {Observable<Object>}
      */
     getWelcomePage(): Observable<object> {
-        return this.service.get('/gateway')
+        return this.service.get('/gateway');
     }
 
     /**

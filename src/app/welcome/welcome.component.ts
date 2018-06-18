@@ -37,9 +37,9 @@ export class WelcomeComponent implements OnInit {
                 this.resolver.resolve(result['next']);
             },
             (error) => {
-                this.handleError(error)
+                this.handleError(error);
             }
-        )
+        );
     }
 
     /**

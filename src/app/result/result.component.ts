@@ -27,12 +27,12 @@ export class ResultComponent implements OnInit {
         this.processing = true;
         this.service.get('/gateway').subscribe(
             (result) => {
-                this.handleSuccess(result)
+                this.handleSuccess(result);
             },
             (error) => {
-                this.handleError(error)
+                this.handleError(error);
             }
-        )
+        );
     }
 
     finish(): void {
@@ -43,9 +43,9 @@ export class ResultComponent implements OnInit {
                 this.resolver.resolve(result['next']);
             },
             (error) => {
-                this.handleError(error)
+                this.handleError(error);
             }
-        )
+        );
     }
 
     /**
