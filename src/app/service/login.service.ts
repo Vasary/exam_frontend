@@ -33,7 +33,7 @@ export class LoginService {
      * @returns {Observable<Object>}
      */
     login(login: string, password: string): Observable<object> {
-        let params =
+        const params =
             new HttpParams()
                 .set('login', login)
                 .set('password', password)
@@ -51,8 +51,8 @@ export class LoginService {
 
     async updateState() {
         try {
-            let result = await this.state.update();
-            let user = new User();
+            const result = await this.state.update();
+            const user = new User();
 
             user.name = result['profile']['first_name'];
             user.surname = result['profile']['second_name'];

@@ -15,15 +15,15 @@ export class LoginComponent implements OnInit {
     private service: LoginService;
     private appState: AppState;
 
-    processing: boolean = false;
-    messages: Array<string>;
+    private processing: boolean;
+    private successful: boolean;
 
-    _login: string;
-    _password: string;
+    private messages: Array<string>;
 
-    successful: boolean = false;
+    private _login: string;
+    private _password: string;
 
-    resolver: ResolverService;
+    private resolver: ResolverService;
 
     constructor(service: LoginService, globals: AppState, resolver: ResolverService) {
         this._login = '';
@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
         this.service = service;
         this.appState = globals;
         this.resolver = resolver;
+        this.processing = false;
+        this.successful = false;
     }
 
     login() {

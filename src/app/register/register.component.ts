@@ -18,9 +18,8 @@ export class RegisterComponent implements OnInit {
 
     messages: Array<string> = [];
 
-    processing: boolean = false;
-
-    successful: boolean = false;
+    processing: boolean;
+    successful: boolean;
 
     login: string = null;
     password: string = null;
@@ -38,12 +37,14 @@ export class RegisterComponent implements OnInit {
         this._name = '';
         this._surname = '';
         this._patronymic = '';
+        this.processing = false;
+        this.successful = false;
     }
 
     registerUser(): void {
         this.processing = true;
 
-        let user = new User();
+        const user = new User();
 
         user.name = this._name;
         user.surname = this._surname;

@@ -7,46 +7,53 @@
 </div>
 
 <header class="bg-white border-bottom box-shadow">
-    <div class="project-name"><i class="fa fa-question-circle"> </i> {{ title }}</div>
 
-    <div *ngIf="loading" class="navigation-loader">
-        <i class="fa fa-cog fa-spin"></i>
-    </div>
+    <div class="row">
+        <div class="col-md-5 col-sm-6 col-6">
+            <div class="project-name"><i class="fa fa-question-circle"> </i> {{ title }}</div>
+        </div>
 
-    <div class="navigation" *ngIf="!loading">
-        <span *ngIf="!state.isLogged()">
-            <a class="btn btn-raised btn-link" [routerLink]="['/about']" routerLinkActive="navigation-active">
-                <i class="fa fa-question-circle-o"></i>
-                <span class="d-none d-md-block">О нас</span>
-            </a>
+        <div class="col-md-7 col-sm-6 col-6 text-right">
+            <div *ngIf="loading" class="navigation-loader">
+                <i class="fa fa-cog fa-spin"></i>
+            </div>
 
-            <a class="btn btn-raised btn-link" [routerLink]="['/register']" routerLinkActive="navigation-active">
-                <i class="fa fa-user"></i>
-                <span class="d-none d-md-block">Регистрация</span>
-            </a>
+            <div class="navigation" *ngIf="!loading">
+                <span *ngIf="!state.isLogged()">
+                    <a class="btn btn-raised btn-link" [routerLink]="['/about']" routerLinkActive="navigation-active">
+                        <i class="fa fa-question-circle-o"></i>
+                        <span class="d-none d-md-block">О нас</span>
+                    </a>
 
-            <a class="btn btn-raised btn-link" [routerLink]="['/login']" routerLinkActive="navigation-active">
-                <i class="fa fa-sign-in"></i>
-                <span class="d-none d-md-block">Войти</span>
-            </a>
-        </span>
+                    <a class="btn btn-raised btn-link" [routerLink]="['/register']" routerLinkActive="navigation-active">
+                        <i class="fa fa-user"></i>
+                        <span class="d-none d-md-block">Регистрация</span>
+                    </a>
 
-        <span *ngIf="state.isLogged()">
-            <a class="btn btn-raised btn-link" (click)="resolve()">
-                <i class="fa fa-question-circle-o"></i>
-                <span class="d-none d-md-block">К тесту</span>
-            </a>
+                    <a class="btn btn-raised btn-link" [routerLink]="['/login']" routerLinkActive="navigation-active">
+                        <i class="fa fa-sign-in"></i>
+                        <span class="d-none d-md-block">Войти</span>
+                    </a>
+                </span>
 
-            <a class="btn btn-raised btn-link">
-                <i class="fa fa-user"></i>
-                <span class="d-none d-md-block">{{ state.getProfile() }}</span>
-            </a>
+                <span *ngIf="state.isLogged()">
+                    <a class="btn btn-raised btn-link" (click)="resolve()">
+                        <i class="fa fa-question-circle-o"></i>
+                        <span class="d-none d-md-block">К тесту</span>
+                    </a>
 
-            <a class="btn btn-raised btn-link" [routerLink]="['/logout']" routerLinkActive="navigation-active">
-                <i class="fa fa-sign-out"></i>
-                <span class="d-none d-md-block">Выйти</span>
-            </a>
-        </span>
+                    <a class="btn btn-raised btn-link">
+                        <i class="fa fa-user"></i>
+                        <span class="d-none d-md-block">{{ state.getProfile() }}</span>
+                    </a>
+
+                    <a class="btn btn-raised btn-link" [routerLink]="['/logout']" routerLinkActive="navigation-active">
+                        <i class="fa fa-sign-out"></i>
+                        <span class="d-none d-md-block">Выйти</span>
+                    </a>
+                </span>
+            </div>
+        </div>
     </div>
 </header>
 

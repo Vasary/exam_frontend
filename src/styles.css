@@ -5,9 +5,15 @@ header {
 
 header .project-name {
     margin-left: 20px;
-    font-size: 30px;
+    font-size: 1.7rem;
     display: inline-block;
     color: #337ab7;
+}
+
+@media (max-width: 500px) {
+    header .project-name {
+        font-size: 1.3rem;
+    }
 }
 
 header .navigation a, a:active, a:hover, a:focus, a:focus-within {
@@ -21,7 +27,6 @@ header .navigation .navigation-active {
 
 header .navigation {
     display: inline-block;
-    float: right;
 }
 
 header .navigation > span {

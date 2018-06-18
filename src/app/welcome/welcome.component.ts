@@ -14,7 +14,7 @@ export class WelcomeComponent implements OnInit {
     private service: QuizWelcomeService;
     public text: string;
     public title: string;
-    public processing: boolean = true;
+    public processing: boolean;
     private router: Router;
     private resolver: ResolverService;
 
@@ -24,6 +24,7 @@ export class WelcomeComponent implements OnInit {
         this.title = '';
         this.router = router;
         this.resolver = resolver;
+        this.processing = true;
     }
 
     /**

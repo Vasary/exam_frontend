@@ -6,7 +6,7 @@ export class Banner {
     set link(value: string) {
         this._link = value;
     }
-    
+
     get link(): string {
         return this._link;
     }
