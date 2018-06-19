@@ -18,7 +18,7 @@ header .project-name {
 
 header .navigation a, a:active, a:hover, a:focus, a:focus-within {
     color: #1976d2;
-    text-decoration: none !important;
+    text-decoration: none;
 }
 
 header .navigation .navigation-active {

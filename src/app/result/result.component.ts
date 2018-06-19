@@ -9,20 +9,31 @@ import {ResolverService} from '../service/resolver.service';
     styleUrls: ['./result.component.css']
 })
 export class ResultComponent implements OnInit {
-    public processing: boolean = true;
-    public error: boolean = false;
-    private service: CoreClientService;
-    public message: string;
-    private total: number = 0;
-    private correct: number = 0;
+    private processing: boolean;
+    private error: boolean;
+    private message: string;
+
+    private total: number;
+    private correct: number;
     private time: string;
+
+    private service: CoreClientService;
     private resolver: ResolverService;
 
     constructor(service: CoreClientService, resolver: ResolverService) {
         this.service = service;
         this.resolver = resolver;
+
+        this.processing = true;
+        this.error = false;
+        this.total = 0;
+        this.correct = 0;
+
     }
 
+    /**
+     * @returns void
+     */
     getResult(): void {
         this.processing = true;
         this.service.get('/gateway').subscribe(
@@ -35,6 +46,9 @@ export class ResultComponent implements OnInit {
         );
     }
 
+    /**
+     * @returns void
+     */
     finish(): void {
         this.processing = true;
         this.service.post('/gateway', []).subscribe(

@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
         this.processing = false;
         this.successful = true;
 
-        let user = new User();
+        const user = new User();
 
         user.token = result['token'];
         user.name = result['profile']['first_name'];

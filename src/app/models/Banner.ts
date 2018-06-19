@@ -1,7 +1,13 @@
 export class Banner {
-    private _link: string = "";
-    private _text: string = "";
-    private _altText: string = "";
+    private _link: string;
+    private _text: string;
+    private _altText: string;
+
+    constructor() {
+        this._text = '';
+        this._link = '';
+        this._altText = '';
+    }
 
     set link(value: string) {
         this._link = value;

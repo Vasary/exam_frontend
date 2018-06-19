@@ -19,8 +19,8 @@ export class QuizSpawnComponent implements OnInit {
     ngOnInit() {
         this.service.get('/gateway').subscribe(
             (result) => {
-                this.resolver.resolve(result['next'])
+                this.resolver.resolve(result['next']);
             }
-        )
+        );
     }
 }

@@ -14,25 +14,10 @@ export class CoreClientService {
     }
 
     /**
-     * @param {string} url
-     * @param {object} data
-     * @returns {Observable<Object>}
+     * @return {object}
      */
-    post(url: string, data: object) {
-        return this.http.post(environment.core +  url, data.toString(), CoreClientService.postHeaders());
-    }
-
-    /**
-     * @param {string} url
-     * @returns {Observable<Object>}
-     */
-    get(url: string) {
-        return this.http.get(environment.core + url, CoreClientService.getHeaders());
-    }
-
     static postHeaders(): object {
-
-        let map = new Map();
+        const map = new Map();
         let headers = new HttpHeaders();
 
         map.set('Content-Type', 'application/x-www-form-urlencoded');
@@ -41,7 +26,7 @@ export class CoreClientService {
             map.set('Token', localStorage.getItem('token'));
         }
 
-        map.forEach(function (value: string, header: string, map: Map<string, string>) {
+        map.forEach(function (value: string, header: string) {
             headers = headers.set(header, value);
         });
 
@@ -59,5 +44,22 @@ export class CoreClientService {
         }
 
         return {};
+    }
+
+    /**
+     * @param {string} url
+     * @param {object} data
+     * @returns {Observable<Object>}
+     */
+    post(url: string, data: object) {
+        return this.http.post(environment.core +  url, data.toString(), CoreClientService.postHeaders());
+    }
+
+    /**
+     * @param {string} url
+     * @returns {Observable<Object>}
+     */
+    get(url: string) {
+        return this.http.get(environment.core + url, CoreClientService.getHeaders());
     }
 }

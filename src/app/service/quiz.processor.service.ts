@@ -17,7 +17,7 @@ export class QuizProcessorService {
      * @returns {Observable}
      */
     sendAnswer(answer: Answer): Observable<object> {
-        let params = new HttpParams().set('value', answer.uuid);
+        const params = new HttpParams().set('value', answer.uuid);
 
         return this.client.post('/gateway', params);
     }
@@ -26,7 +26,7 @@ export class QuizProcessorService {
      * @returns {Observable}
      */
     sendSkip(): Observable<object> {
-        let params =
+        const params =
             new HttpParams()
                 .set('value', null)
                 .set('skip', 'true')

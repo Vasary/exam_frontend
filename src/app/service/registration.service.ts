@@ -16,7 +16,7 @@ export class RegistrationService {
      * @returns {Observable<Object>}
      */
     register(user: User) {
-        let params = new HttpParams()
+        const params = new HttpParams()
             .set('firstName', user.name)
             .set('secondName', user.surname)
             .set('lastName', user.patronymic)

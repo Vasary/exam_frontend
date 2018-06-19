@@ -25,7 +25,7 @@ export class ResolverService {
 
     resolve(result: object) {
         if (result && result.hasOwnProperty('action')) {
-            let action = this.map.get(result['action']) || '/about';
+            const action = this.map.get(result['action']) || '/about';
 
             this.router.navigate([action]);
         }
