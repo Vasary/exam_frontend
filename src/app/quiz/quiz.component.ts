@@ -104,7 +104,7 @@ export class QuizComponent implements OnInit {
         banner.text = response['text'];
         banner.altText = response['alt_text'];
         banner.src = response['image'];
-        banner.showTime = parseInt(response['show_time']);
+        banner.showTime = parseInt(response['show_time'], 10);
 
         this.setPromoTimer(banner);
 
@@ -139,11 +139,7 @@ export class QuizComponent implements OnInit {
         this.text = quizData['question'];
         this.answers = [];
 
-        if(quizData['canBeSkipped'] === true) {
-            this.allowSkip = true;
-        } else {
-            this.allowSkip = false;
-        }
+        this.allowSkip = quizData['canBeSkipped'] === true;
 
         for (const uuid in quizData['answers']) {
             if (quizData['answers'].hasOwnProperty(uuid)) {
