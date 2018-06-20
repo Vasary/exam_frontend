@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {RegistrationService} from '../service/registration.service';
-import {User} from '../models';
-import {HttpErrorResponse} from '@angular/common/http';
-import {Router} from '@angular/router';
-import {AppState} from '../app.state.service';
+import { Component, OnInit } from '@angular/core';
+import { RegistrationService } from '../service/registration.service';
+import { User } from '../models';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AppState } from '../app.state.service';
 
 @Component({
     selector: 'app-register',

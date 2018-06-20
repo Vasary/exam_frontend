@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Answer, Banner} from '../models';
-import {HttpErrorResponse} from '@angular/common/http';
-import {QuizProcessorService} from '../service/quiz.processor.service';
-import {ResolverService} from '../service/resolver.service';
-import {TimerService} from '../service/timer.service';
+import { Component, OnInit } from '@angular/core';
+import { Answer, Banner } from '../models';
+import { HttpErrorResponse } from '@angular/common/http';
+import { QuizProcessorService } from '../service/quiz.processor.service';
+import { ResolverService } from '../service/resolver.service';
+import { TimerService } from '../service/timer.service';
 
 @Component({
     selector: 'app-quiz',
@@ -50,8 +50,8 @@ export class QuizComponent implements OnInit {
 
         this.service.sendSkip().subscribe(
             (result) => {
-                    this.handleResult(result);
-                },
+                this.handleResult(result);
+            },
             (error) => {
                 this.handleError(error);
             }
@@ -70,7 +70,7 @@ export class QuizComponent implements OnInit {
                     this.handleError(error);
                 }
             )
-        ;
+            ;
         } else {
             alert('Выберите ответ');
         }

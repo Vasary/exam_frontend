@@ -1,14 +1,14 @@
-import {RouterModule, Routes} from '@angular/router';
-import {AboutComponent} from './about/about.component';
-import {LoginComponent} from './login/login.component';
-import {RegisterComponent} from './register/register.component';
-import {AuthGuard} from './middleware';
-import {QuizComponent} from './quiz/quiz.component';
-import {WelcomeComponent} from './welcome/welcome.component';
-import {ResolverComponent} from './resolver/resolver.component';
-import {ResultComponent} from './result/result.component';
-import {QuizSpawnComponent} from './quiz.spawn/quiz.spawn.component';
-import {LogoutComponent} from './logout/logout.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './about/about.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './middleware';
+import { QuizComponent } from './quiz/quiz.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { ResolverComponent } from './resolver/resolver.component';
+import { ResultComponent } from './result/result.component';
+import { QuizSpawnComponent } from './quiz.spawn/quiz.spawn.component';
+import { LogoutComponent } from './logout/logout.component';
 
 const appRoutes: Routes = [
     {path: 'about', component: AboutComponent},

@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {CoreClientService} from '../service/core.client.service';
-import {HttpErrorResponse} from '@angular/common/http';
-import {ResolverService} from '../service/resolver.service';
+import { Component, OnInit } from '@angular/core';
+import { CoreClientService } from '../service/core.client.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ResolverService } from '../service/resolver.service';
 
 @Component({
     selector: 'app-result',

@@ -1,15 +1,15 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 
 import { QuizProcessorService } from './quiz.processor.service';
 
 describe('Quiz.ProcessorService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [Quiz.ProcessorService]
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            providers: [Quiz.ProcessorService]
+        });
     });
-  });
 
-  it('should be created', inject([QuizProcessorService], (service: QuizProcessorService) => {
-    expect(service).toBeTruthy();
-  }));
+    it('should be created', inject([QuizProcessorService], (service: QuizProcessorService) => {
+        expect(service).toBeTruthy();
+    }));
 });

@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {CoreClientService} from './core.client.service';
-import {User} from '../models';
-import {HttpParams} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { CoreClientService } from './core.client.service';
+import { User } from '../models';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class RegistrationService {

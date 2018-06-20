@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {LoginService} from '../service/login.service';
-import {HttpErrorResponse} from '@angular/common/http';
-import {User} from '../models';
-import {AppState} from '../app.state.service';
-import {ResolverService} from '../service/resolver.service';
+import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../service/login.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { User } from '../models';
+import { AppState } from '../app.state.service';
+import { ResolverService } from '../service/resolver.service';
 
 @Component({
     selector: 'app-login',
@@ -16,10 +16,10 @@ export class LoginComponent implements OnInit {
     private appState: AppState;
     private resolver: ResolverService;
 
-    public  processing: boolean;
-    public  successful: boolean;
+    public processing: boolean;
+    public successful: boolean;
 
-    public  messages: Array<string>;
+    public messages: Array<string>;
 
     public _login: string;
     public _password: string;

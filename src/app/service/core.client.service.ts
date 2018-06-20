@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {environment} from '../../environments/environment';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class CoreClientService {
@@ -52,7 +52,7 @@ export class CoreClientService {
      * @returns {Observable<Object>}
      */
     post(url: string, data: object) {
-        return this.http.post(environment.core +  url, data.toString(), CoreClientService.postHeaders());
+        return this.http.post(environment.core + url, data.toString(), CoreClientService.postHeaders());
     }
 
     /**

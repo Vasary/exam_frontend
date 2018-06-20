@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {User} from './models';
-import {CoreClientService} from './service/core.client.service';
+import { Injectable } from '@angular/core';
+import { User } from './models';
+import { CoreClientService } from './service/core.client.service';
 
 @Injectable()
 export class AppState {

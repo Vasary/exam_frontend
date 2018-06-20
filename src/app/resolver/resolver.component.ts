@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ResolverService} from '../service/resolver.service';
-import {CoreClientService} from '../service/core.client.service';
+import { Component, OnInit } from '@angular/core';
+import { ResolverService } from '../service/resolver.service';
+import { CoreClientService } from '../service/core.client.service';
 
 @Component({
     selector: 'app-resolver',

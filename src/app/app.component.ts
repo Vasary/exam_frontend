@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {LoginService} from './service/login.service';
-import {AppState} from './app.state.service';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { LoginService } from './service/login.service';
+import { AppState } from './app.state.service';
 
 @Component({
     selector: 'app-root',

@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {CoreClientService} from './core.client.service';
-import {Observable} from 'rxjs/Observable';
-import {User} from '../models';
-import {AppState} from '../app.state.service';
-import {ResolverService} from './resolver.service';
-import {Router} from '@angular/router';
-import {HttpParams} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { CoreClientService } from './core.client.service';
+import { Observable } from 'rxjs/Observable';
+import { User } from '../models';
+import { AppState } from '../app.state.service';
+import { ResolverService } from './resolver.service';
+import { Router } from '@angular/router';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class LoginService {

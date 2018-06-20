@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {CoreClientService} from './core.client.service';
-import {Answer} from '../models';
-import {Observable} from 'rxjs/Observable';
-import {HttpParams} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { CoreClientService } from './core.client.service';
+import { Answer } from '../models';
+import { Observable } from 'rxjs/Observable';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class QuizProcessorService {

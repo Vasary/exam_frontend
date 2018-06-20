@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {CoreClientService} from './core.client.service';
-import {AppState} from '../app.state.service';
-import {Router} from '@angular/router';
+import { Injectable } from '@angular/core';
+import { CoreClientService } from './core.client.service';
+import { AppState } from '../app.state.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ResolverService {

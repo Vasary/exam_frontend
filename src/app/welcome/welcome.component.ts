@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {QuizWelcomeService} from '../service/quiz.welcome.service';
-import {HttpErrorResponse} from '@angular/common/http';
-import {Router} from '@angular/router';
-import {ResolverService} from '../service/resolver.service';
+import { Component, OnInit } from '@angular/core';
+import { QuizWelcomeService } from '../service/quiz.welcome.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { ResolverService } from '../service/resolver.service';
 
 @Component({
     selector: 'app-welcome',
