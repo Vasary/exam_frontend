@@ -13,9 +13,8 @@ export class TimerService {
         let seconds: string;
 
         const timeInterval = setInterval(() => {
-
-            minutes = (timer / 60).toString();
-            seconds = (timer % 60).toString();
+            minutes = Math.round(timer / 60).toString();
+            seconds = Math.round(timer % 60).toString();
 
             minutes = parseInt(minutes, 10) < 10 ? '0' + minutes.toString() : minutes.toString();
             seconds = parseInt(seconds, 10) < 10 ? '0' + seconds.toString() : seconds.toString();
