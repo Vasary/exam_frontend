@@ -14,9 +14,11 @@
 
             <div class="banner-pic-box">
                 <picture>
-                    <img src="{{ banner.link }}" class="rounded mx-auto d-block img-fluid img-thumbnail" alt="{{ banner.altText }}">
+                    <img src="{{ banner.src }}" class="rounded mx-auto d-block img-fluid img-thumbnail" alt="{{ banner.altText }}">
                 </picture>
             </div>
+
+            <div class="banner-timer text-center">До конца просмотра: {{ promoTimer }}</div>
         </div>
 
         <form class="quiz-form" *ngIf="!processing && !showBanner">
@@ -41,7 +43,7 @@
 
             <div class="row quiz-buttons">
                 <div class="col-md-4 quiz-skip-btn">
-                    <button [disabled]="processing" class="btn btn-lg btn-primary btn-block" (click)="sendSkip()">Пропустить</button>
+                    <button [disabled]="processing || !allowSkip" class="btn btn-lg btn-primary btn-block" (click)="sendSkip()">Пропустить</button>
                 </div>
                 <div class="col-md-8 quiz-answer-btn">
                     <button [disabled]="processing" class="btn btn-lg btn-primary btn-block" (click)="sendAnswer()">Ответить</button>

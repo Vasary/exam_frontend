@@ -131,6 +131,10 @@
     color: gray;
 }
 
+.banner-timer {
+    margin-top: 10px;
+}
+
 .banner-form .banner-pic-box {
     margin-top: 6px;
 }

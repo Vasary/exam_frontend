@@ -14,16 +14,15 @@ import {ResolverService} from '../service/resolver.service';
 export class LoginComponent implements OnInit {
     private service: LoginService;
     private appState: AppState;
-
-    private processing: boolean;
-    private successful: boolean;
-
-    private messages: Array<string>;
-
-    private _login: string;
-    private _password: string;
-
     private resolver: ResolverService;
+
+    public  processing: boolean;
+    public  successful: boolean;
+
+    public  messages: Array<string>;
+
+    public _login: string;
+    public _password: string;
 
     constructor(service: LoginService, globals: AppState, resolver: ResolverService) {
         this._login = '';
@@ -46,6 +45,9 @@ export class LoginComponent implements OnInit {
         ;
     }
 
+    /**
+     * @param {HttpErrorResponse} err
+     */
     handleError(err: HttpErrorResponse) {
         this.messages = [];
 
@@ -58,6 +60,9 @@ export class LoginComponent implements OnInit {
         this.processing = false;
     }
 
+    /**
+     * @param {object} result
+     */
     handleSuccess(result: object) {
         this.messages = [];
         this.processing = false;

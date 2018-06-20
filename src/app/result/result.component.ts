@@ -9,10 +9,10 @@ import {ResolverService} from '../service/resolver.service';
     styleUrls: ['./result.component.css']
 })
 export class ResultComponent implements OnInit {
-    private processing: boolean;
-    private error: boolean;
-    private message: string;
+    public processing: boolean;
+    public error: boolean;
 
+    private message: string;
     private total: number;
     private correct: number;
     private time: string;
@@ -28,7 +28,6 @@ export class ResultComponent implements OnInit {
         this.error = false;
         this.total = 0;
         this.correct = 0;
-
     }
 
     /**

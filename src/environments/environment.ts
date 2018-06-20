@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    core: 'http://core.exam.vasaryslab.com'
+    core: 'http://localhost:81'
 };

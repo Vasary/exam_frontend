@@ -28,7 +28,6 @@ export class QuizProcessorService {
     sendSkip(): Observable<object> {
         const params =
             new HttpParams()
-                .set('value', null)
                 .set('skip', 'true')
         ;
 

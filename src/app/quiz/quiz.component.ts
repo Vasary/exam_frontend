@@ -3,6 +3,7 @@ import {Answer, Banner} from '../models';
 import {HttpErrorResponse} from '@angular/common/http';
 import {QuizProcessorService} from '../service/quiz.processor.service';
 import {ResolverService} from '../service/resolver.service';
+import {TimerService} from '../service/timer.service';
 
 @Component({
     selector: 'app-quiz',
@@ -11,30 +12,41 @@ import {ResolverService} from '../service/resolver.service';
 })
 
 export class QuizComponent implements OnInit {
+    public answers: Array<Answer>;
+
+    public processing: boolean;
+    public showBanner: boolean;
+
     private service: QuizProcessorService;
-
-    private text: string;
-    private answers: Array<Answer>;
-
-    private processing: boolean;
-    private showBanner: boolean;
+    private resolver: ResolverService;
+    private banner: Banner;
+    private timer: TimerService;
 
     private questionAnswer: Answer;
 
-    private resolver: ResolverService;
-    private banner: Banner;
+    private text: string;
+    private allowSkip: boolean;
+    private promoTimer: string;
 
-    constructor(service: QuizProcessorService, resolver: ResolverService) {
+    constructor(service: QuizProcessorService, resolver: ResolverService, timer: TimerService) {
         this.processing = true;
         this.showBanner = false;
+        this.allowSkip = false;
+
+        this.promoTimer = '';
 
         this.service = service;
         this.resolver = resolver;
         this.banner = new Banner();
+        this.timer = timer;
     }
 
     sendSkip(): void {
         this.processing = true;
+
+        if (!this.allowSkip) {
+            alert('Skip not allowed for this question');
+        }
 
         this.service.sendSkip().subscribe(
             (result) => {
@@ -65,8 +77,6 @@ export class QuizComponent implements OnInit {
     }
 
     handleResult(result: object): void {
-        // if show banner!
-
         this.getQuestion();
     }
 
@@ -91,9 +101,26 @@ export class QuizComponent implements OnInit {
 
         const banner = new Banner();
 
-        banner.text = 'Example';
-        banner.link = 'assets/images/banner_example.jpg';
+        banner.text = response['text'];
+        banner.altText = response['alt_text'];
+        banner.src = response['image'];
+        banner.showTime = parseInt(response['show_time']);
+
+        this.setPromoTimer(banner);
+
         this.banner = banner;
+    }
+
+    setPromoTimer(banner: Banner): void {
+        this.timer.countDown(
+            banner.showTime,
+            () => {
+                this.showBanner = false;
+            },
+            (minutes, seconds) => {
+                this.promoTimer = minutes + ':' + seconds;
+            }
+        );
     }
 
     handleSuccess(response: object): void {
@@ -103,14 +130,26 @@ export class QuizComponent implements OnInit {
             return;
         }
 
-        this.text = response['question'];
+        if (response.hasOwnProperty('promotion')) {
+            this.handleAdv(response['promotion']);
+        }
+
+        const quizData = response['quiz'];
+
+        this.text = quizData['question'];
         this.answers = [];
 
-        for (const uuid in response['answers']) {
-            if (response['answers'].hasOwnProperty(uuid)) {
+        if(quizData['canBeSkipped'] === true) {
+            this.allowSkip = true;
+        } else {
+            this.allowSkip = false;
+        }
+
+        for (const uuid in quizData['answers']) {
+            if (quizData['answers'].hasOwnProperty(uuid)) {
                 const answer = new Answer();
                 answer.uuid = uuid;
-                answer.text = response['answers'][uuid];
+                answer.text = quizData['answers'][uuid];
 
                 this.answers.push(answer);
             }

@@ -1,20 +1,22 @@
 export class Banner {
-    private _link: string;
+    private _src: string;
     private _text: string;
     private _altText: string;
+    private _showTime: number;
 
     constructor() {
         this._text = '';
-        this._link = '';
+        this._src = '';
         this._altText = '';
+        this._showTime = 0;
     }
 
-    set link(value: string) {
-        this._link = value;
+    set src(value: string) {
+        this._src = value;
     }
 
-    get link(): string {
-        return this._link;
+    get src(): string {
+        return this._src;
     }
 
     set text(value: string) {
@@ -31,5 +33,13 @@ export class Banner {
 
     get altText(): string {
         return this._altText;
+    }
+
+    set showTime(value: number) {
+        this._showTime = value;
+    }
+
+    get showTime(): number {
+        return this._showTime;
     }
 }
