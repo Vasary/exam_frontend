@@ -7,5 +7,5 @@ export const environment = {
 
     version: data.version,
     name: data.name,
-    author: data.name
+    author: data.author
 };
