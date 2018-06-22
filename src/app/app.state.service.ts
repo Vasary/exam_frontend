@@ -23,7 +23,7 @@ export class AppState {
     }
 
     update(): Promise<object> {
-        return this.service.get<object>('/tools').toPromise();
+        return this.service.get('/tools').toPromise();
     }
 
     getProfile(): string {
