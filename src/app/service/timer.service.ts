@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class TimerService {
+
     /**
      * @param {number} durationTimeInSeconds
      * @param {() => void} callback
@@ -9,8 +10,8 @@ export class TimerService {
      */
     countDown(durationTimeInSeconds: number, callback: () => void, display: (minutes: string, seconds: string) => void) {
         let timer: number = durationTimeInSeconds;
-        let minutes: string;
-        let seconds: string;
+        let minutes: string = '';
+        let seconds: string = '';
 
         const timeInterval = setInterval(() => {
             minutes = Math.round(timer / 60).toString();

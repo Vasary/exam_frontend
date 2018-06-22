@@ -42,16 +42,27 @@ export class LoginService {
         return this.service.post('/login', params);
     }
 
+    /**
+     * @returns {Promise<void>}
+     */
     async logout() {
-        await localStorage.removeItem('token');
-        this.state.user = null;
-
-        await this.updateState();
+        this.service.get('/gateway').subscribe(
+            () => {
+                localStorage.removeItem('token');
+                this.updateState();
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
     }
 
-    async updateState() {
+    /**
+     * @returns void
+     */
+    updateState() {
         try {
-            const result = await this.state.update();
+            const result = this.state.update();
             const user = new User();
 
             user.name = result['profile']['first_name'];

@@ -69,9 +69,11 @@ export class ResultComponent implements OnInit {
         this.message = '';
         this.error = false;
 
-        this.total = result['questions'];
-        this.correct = result['correct'];
-        this.time = result['time'];
+        result = result['quiz_result']['data'];
+
+        this.total = result['questions_total'];
+        this.correct = result['questions_correct'];
+        this.time = result['time_spent'];
     }
 
     /**
