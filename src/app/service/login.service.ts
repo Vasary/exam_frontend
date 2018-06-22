@@ -47,29 +47,34 @@ export class LoginService {
      */
     async logout() {
         this.service.get('/gateway').subscribe(
-            () => {
-                localStorage.removeItem('token');
-                this.updateState();
+            (result) => {
+                console.log('Successfully');
             },
             (error) => {
-                console.log(error);
+                console.log('We have some errors in backend');
             }
         );
+
+        localStorage.removeItem('token');
+        await this.updateState();
     }
 
     /**
      * @returns void
      */
-    updateState() {
+    async updateState() {
         try {
-            const result = this.state.update();
-            const user = new User();
+            const result = await this.state.update();
 
-            user.name = result['profile']['first_name'];
-            user.surname = result['profile']['second_name'];
-            user.patronymic = result['profile']['last_name'];
+            if (result.hasOwnProperty('profile')) {
+                const user = new User();
 
-            this.state.user = user;
+                user.name = result['profile']['first_name'];
+                user.surname = result['profile']['second_name'];
+                user.patronymic = result['profile']['last_name'];
+
+                this.state.user = user;
+            }
 
             if (result.hasOwnProperty('current')) {
                 this.resolver.resolve(result['current']);
