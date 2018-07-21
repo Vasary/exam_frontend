@@ -20,6 +20,7 @@ export class RegistrationService {
             .set('firstName', user.name)
             .set('secondName', user.surname)
             .set('lastName', user.patronymic)
+            .set('email', user.email)
         ;
 
         return this.service.post('/register', params);

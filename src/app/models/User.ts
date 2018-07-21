@@ -3,6 +3,7 @@ export class User {
     private _name: string = null;
     private _patronymic: string = null;
     private _token: string = null;
+    private _email: string = null;
 
     get surname(): string {
         return this._surname;
@@ -34,5 +35,13 @@ export class User {
 
     set token(value: string) {
         this._token = value;
+    }
+
+    get email(): string {
+        return this._email;
+    }
+
+    set email(value: string) {
+        this._email = value;
     }
 }

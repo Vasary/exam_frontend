@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
     _name: string;
     _surname: string;
     _patronymic: string;
+    _email: string;
 
     messages: Array<string> = [];
 
@@ -49,6 +50,7 @@ export class RegisterComponent implements OnInit {
         user.name = this._name;
         user.surname = this._surname;
         user.patronymic = this._patronymic;
+        user.email = this._email;
 
         this.service.register(user).subscribe(res => this.handleSuccess(res, user), error => this.handleError(error));
     }

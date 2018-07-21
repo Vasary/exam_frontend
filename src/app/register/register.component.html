@@ -34,6 +34,11 @@
                        placeholder="Отчество" required/>
             </div>
 
+            <div class="form-label-group registration-form-margin-top">
+                <input type="text" value="" name="_email" [(ngModel)]="_email" class="form-control"
+                       placeholder="Email" required/>
+            </div>
+
             <button class="btn btn-lg btn-primary btn-block action-btn" (click)="registerUser()"
                     [disabled]="processing">Зарегистрироваться
             </button>
