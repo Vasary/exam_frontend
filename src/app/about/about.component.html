@@ -1,4 +1,8 @@
 <main role="main" class="container">
-  <h1 class="mt-5">О проекте</h1>
-  <p class="lead">Тут будет какой то супер текст, бла бла бла</p>
+    <div *ngIf="processing">
+        <div class="alert alert-warning text-center">
+            <i class="fa fa-cog fa-spin"></i>
+        </div>
+    </div>
+    <p class="lead">{{ text }}</p>
 </main>

@@ -22,6 +22,7 @@ import { ResultComponent } from './result/result.component';
 import { QuizSpawnComponent } from './quiz.spawn/quiz.spawn.component';
 import { LogoutComponent } from './logout/logout.component';
 import { TimerService } from './service/timer.service';
+import { PageService} from './service/page.service';
 
 @NgModule({
     declarations: [
@@ -52,7 +53,8 @@ import { TimerService } from './service/timer.service';
         QuizWelcomeService,
         QuizProcessorService,
         ResolverService,
-        TimerService
+        TimerService,
+        PageService
     ],
     bootstrap: [AppComponent]
 })
