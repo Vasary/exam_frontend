@@ -22,7 +22,10 @@ import { ResultComponent } from './result/result.component';
 import { QuizSpawnComponent } from './quiz.spawn/quiz.spawn.component';
 import { LogoutComponent } from './logout/logout.component';
 import { TimerService } from './service/timer.service';
-import { PageService} from './service/page.service';
+import { PageService } from './service/page.service';
+import { RecoveryComponent } from './recovery/recovery.component';
+import { ReferenceCollectorVisitor } from 'codelyzer/angular/templates/referenceCollectorVisitor';
+import { RecoveryService } from './service/recovery.service';
 
 @NgModule({
     declarations: [
@@ -36,6 +39,7 @@ import { PageService} from './service/page.service';
         ResultComponent,
         QuizSpawnComponent,
         LogoutComponent,
+        RecoveryComponent,
     ],
     imports: [
         BrowserModule,
@@ -54,7 +58,9 @@ import { PageService} from './service/page.service';
         QuizProcessorService,
         ResolverService,
         TimerService,
-        PageService
+        PageService,
+        ReferenceCollectorVisitor,
+        RecoveryService,
     ],
     bootstrap: [AppComponent]
 })

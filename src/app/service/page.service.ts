@@ -14,11 +14,9 @@ export class PageService {
     }
 
     /**
-     * @param {string} login
-     * @param {string} password
      * @returns {Observable<Object>}
      */
-    getAbout(login: string, password: string): Observable<object> {
+    getAbout(): Observable<object> {
         return this.service.get('/page/about');
     }
 }

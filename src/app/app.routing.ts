@@ -9,10 +9,12 @@ import { ResolverComponent } from './resolver/resolver.component';
 import { ResultComponent } from './result/result.component';
 import { QuizSpawnComponent } from './quiz.spawn/quiz.spawn.component';
 import { LogoutComponent } from './logout/logout.component';
+import { RecoveryComponent } from './recovery/recovery.component';
 
 const appRoutes: Routes = [
     {path: 'about', component: AboutComponent},
     {path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard]},
+    {path: 'recovery', component: RecoveryComponent},
 
     {path: 'register', component: RegisterComponent},
 

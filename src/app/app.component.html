@@ -34,6 +34,11 @@
                         <i class="fa fa-sign-in"></i>
                         <span class="d-none d-md-block">Войти</span>
                     </a>
+
+                    <a class="btn btn-raised btn-link" [routerLink]="['/recovery']" routerLinkActive="navigation-active">
+                        <i class="fa fa-sign-in"></i>
+                        <span class="d-none d-md-block">Восстановить доступ</span>
+                    </a>
                 </span>
 
                 <span *ngIf="state.isLogged()">
