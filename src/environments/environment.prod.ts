@@ -1,9 +1,10 @@
 import * as data from '../../package.json';
+import * as settings from '../../.environment.json';
 
 export const environment = {
     production: true,
 
-    core: 'http://core.exam.vasaryslab.com',
+    core: 'http://localhost:81',
 
     version: data.version,
     name: data.name,

@@ -1,26 +1,29 @@
-## Exam frontend client
+## Клиент для системы тестирования
 
-[![Build Status](https://travis-ci.org/Vasary/exam_frontend.svg?branch=master)](https://travis-ci.org/Vasary/exam_frontend) [![CodeFactor](https://www.codefactor.io/repository/github/vasary/exam_frontend/badge)](https://www.codefactor.io/repository/github/vasary/exam_frontend)
+### Возможности
+- Регистрация
+- Авторизация
+- Тесты
+- Повтороное прохождение теста
+- Показ рекалмы
+- Восстановление доступа
 
-### Features
-- Registration
-- Login
-- Repeatable test
-- Test result
-- Show advertisement
+### Установка
 
+* Скопируйте .environment.json.dist в  .environment.json
+* В .environment.json в поле core->url укажите путь до сервера где находится проект core
+* Далее нужно собрать проект
 
-### Install on production
+### Сборка проекта
 ```
-version: '3'
-
-services:
-  nginx:
-    container_name: exam-nginx
-    image: vasary/exam-frontend:latest
-    ports:
-      - 80:80
-      - 443:443
-    command: nginx -g "daemon off;"
-
+# docker-compose build app
+# docker-compose run app yarn install
+# docker-compose run app ng build --prod
+# docker-compose build nginx
 ```
+
+### Запуск собранного проекта
+```
+  - docker-compose -f docker-compose.develop.yaml up -d
+```
+Проект будет доступен по порту 80

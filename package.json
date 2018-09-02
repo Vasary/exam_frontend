@@ -1,7 +1,7 @@
 {
-  "name": "Exam",
-  "version": "0.9.7",
-  "license": "MIT",
+  "name": "exam_client",
+  "version": "1.0.0",
+  "license": "Commercial",
   "author": "Gievoi Viktor <gievoi.v@gmail.com>",
   "scripts": {
     "ng": "ng",
