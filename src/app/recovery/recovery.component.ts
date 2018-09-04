@@ -13,7 +13,7 @@ export class RecoveryComponent implements OnInit {
 
     public processing: boolean;
     public successful: boolean;
-    private active: boolean;
+    public active: boolean;
 
     public messages: Array<string>;
 
