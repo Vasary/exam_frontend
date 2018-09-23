@@ -14,7 +14,8 @@
 
             <div class="banner-pic-box">
                 <picture>
-                    <img src="{{ banner.src }}" class="rounded mx-auto d-block img-fluid img-thumbnail" alt="{{ banner.altText }}">
+                    <img src="{{ banner.src }}" class="rounded mx-auto d-block img-fluid img-thumbnail"
+                         alt="{{ banner.altText }}">
                 </picture>
             </div>
 
@@ -24,16 +25,15 @@
         <form class="quiz-form" *ngIf="!processing && !showBanner">
             <div class="quiz-question">
                 <blockquote>
-                    <div class="quiz-question">
-                        {{ text }}
-                    </div>
+                    <div class="quiz-question" [innerHTML]="text"></div>
                 </blockquote>
             </div>
 
             <div class="quiz-answers" *ngFor="let answer of answers">
                 <div class="quiz-radio">
                     <div>
-                        <input id="{{ answer.uuid }}" type="radio" name="g" [value]="answer.uuid" (click)="setAnswer(answer)">
+                        <input id="{{ answer.uuid }}" type="radio" name="g" [value]="answer.uuid"
+                               (click)="setAnswer(answer)">
                         <label for="{{ answer.uuid }}">{{ answer.text }}</label>
                     </div>
                 </div>
@@ -41,12 +41,22 @@
 
             <div class="quiz-separator"></div>
 
+            <div class="retry-form" *ngIf="retry">
+                <div>Медленное соединение с интернетом. Повторите попытку повторно нажав на кнопку
+                    ответить.
+                </div>
+            </div>
+
             <div class="row quiz-buttons">
                 <div class="col-md-4 quiz-skip-btn">
-                    <button [disabled]="processing || !allowSkip" class="btn btn-lg btn-primary btn-block" (click)="sendSkip()">Пропустить</button>
+                    <button [disabled]="processing || !allowSkip" class="btn btn-lg btn-primary btn-block"
+                            (click)="sendSkip()">Пропустить
+                    </button>
                 </div>
                 <div class="col-md-8 quiz-answer-btn">
-                    <button [disabled]="processing" class="btn btn-lg btn-primary btn-block" (click)="sendAnswer()">Ответить</button>
+                    <button [disabled]="processing" class="btn btn-lg btn-primary btn-block" (click)="sendAnswer()">
+                        Ответить
+                    </button>
                 </div>
             </div>
         </form>

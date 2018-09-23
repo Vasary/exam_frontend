@@ -3,7 +3,7 @@ import * as data from '../../package.json';
 export const environment = {
     production: true,
 
-    core: 'http://localhost:81',
+    core: 'http://core.dent.plus',
 
     version: data.version,
     name: data.name,

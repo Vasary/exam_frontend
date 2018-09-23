@@ -17,6 +17,8 @@ export class QuizComponent implements OnInit {
     public processing: boolean;
     public showBanner: boolean;
 
+    public retry: boolean;
+
     private service: QuizProcessorService;
     private resolver: ResolverService;
     private banner: Banner;
@@ -32,6 +34,7 @@ export class QuizComponent implements OnInit {
         this.processing = true;
         this.showBanner = false;
         this.allowSkip = false;
+        this.retry = false;
 
         this.promoTimer = '';
 
@@ -42,6 +45,7 @@ export class QuizComponent implements OnInit {
     }
 
     sendSkip(): void {
+        this.retry = false;
         this.processing = true;
 
         if (!this.allowSkip) {
@@ -59,6 +63,8 @@ export class QuizComponent implements OnInit {
     }
 
     sendAnswer() {
+        this.retry = false;
+
         if (null !== this.questionAnswer) {
             this.processing = true;
 
@@ -156,7 +162,9 @@ export class QuizComponent implements OnInit {
 
     handleError(error: HttpErrorResponse) {
         this.processing = false;
-        this.text = error.message;
+        this.retry = true;
+
+        console.log(error.message);
     }
 
     ngOnInit() {

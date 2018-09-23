@@ -32,6 +32,12 @@
     border-top: 1px solid #dee2e6;
 }
 
+.retry-form {
+    padding: 16px;
+    font-size: 14px;
+    color: red;
+}
+
 @keyframes ripple {
     0% {
         box-shadow: 0 0 0 1px rgba(0, 0, 0, 0);
