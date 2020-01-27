@@ -1,7 +1,9 @@
-FROM nginx:1.15.0-alpine
+FROM nginx:1.16.1-alpine
 
-RUN mkdir -p /app
+RUN mkdir -p /application
+
 ADD ./config/app.conf /etc/nginx/conf.d/default.conf
-COPY ./dist ./app
 
-WORKDIR /app
+COPY ./dist ./application
+
+WORKDIR /application
