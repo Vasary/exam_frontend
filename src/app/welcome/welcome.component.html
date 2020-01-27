@@ -5,8 +5,7 @@
                 <i class="fa fa-cog fa-spin"></i>
             </div>
         </div>
-        <div *ngIf="!processing">
-            {{ text }}
+        <div *ngIf="!processing" [innerHTML]="text">
         </div>
         <br>
         <div class="quiz-separator"></div>
